@@ -1,0 +1,34 @@
+﻿@using Microsoft.AspNet.Identity
+@using CrediAdmin.Helper
+
+@if (Request.IsAuthenticated)
+{
+    using (Html.BeginForm("LogOff", "Account", FormMethod.Post, new { id = "logoutForm", @class = "navbar-right" }))
+    {
+    @Html.AntiForgeryToken()
+
+    <ul class="nav navbar-nav navbar-right">
+        @*<li>@Html.ActionLink("Registrar", "Register", "Account")</li>*@
+        @if (ViewContext.HttpContext.User.IsInRole("Administrador"))
+        {
+            @*@Html.MenuLink("Registrar", "Register", "Account")*@
+            @*@Html.MenuLink("Registrar", "Index", "AspNetUsers")*@
+        }
+        <li>
+            @*@Html.ActionLink("Hello " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })*@
+            @Html.MenuLink(User.Identity.GetUserName(), "Index", "Manage")
+        </li>
+        <li><a href="javascript:document.getElementById('logoutForm').submit()">Salir</a></li>
+        @*<li><a href="#" onclick="close_window();return false;">Salir</a></li>*@
+        
+    </ul>
+    }
+}
+else
+{
+    <ul class="nav navbar-nav navbar-right">
+        <li>@Html.ActionLink("Conectarse", "Login", "Account", routeValues: null, htmlAttributes: new { id = "loginLink" })</li>
+       
+       
+    </ul>
+}

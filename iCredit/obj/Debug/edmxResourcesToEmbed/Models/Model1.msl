@@ -1,0 +1,403 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+  <EntityContainerMapping StorageEntityContainer="icreditModelStoreContainer" CdmEntityContainer="icreditEntities">
+    <EntitySetMapping Name="C__migrationhistory">
+      <EntityTypeMapping TypeName="icreditModel.C__migrationhistory">
+        <MappingFragment StoreEntitySet="__migrationhistory">
+          <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+          <ScalarProperty Name="Model" ColumnName="Model" />
+          <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+          <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="abono">
+      <EntityTypeMapping TypeName="icreditModel.abono">
+        <MappingFragment StoreEntitySet="abono">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+          <ScalarProperty Name="AbonoNro" ColumnName="AbonoNro" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Devolucion" ColumnName="Devolucion" />
+          <ScalarProperty Name="Paga" ColumnName="Paga" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="CuotaId" ColumnName="CuotaId" />
+          <ScalarProperty Name="AbonoId" ColumnName="AbonoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="abonocapital">
+      <EntityTypeMapping TypeName="icreditModel.abonocapital">
+        <MappingFragment StoreEntitySet="abonocapital">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+          <ScalarProperty Name="AbonoCapitalNro" ColumnName="AbonoCapitalNro" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="CreditoId" ColumnName="CreditoId" />
+          <ScalarProperty Name="AbonoCapitalId" ColumnName="AbonoCapitalId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aporte">
+      <EntityTypeMapping TypeName="icreditModel.aporte">
+        <MappingFragment StoreEntitySet="aporte">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="ConceptoAporteId" ColumnName="ConceptoAporteId" />
+          <ScalarProperty Name="SocioId" ColumnName="SocioId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="AporteId" ColumnName="AporteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnetroles">
+      <EntityTypeMapping TypeName="icreditModel.aspnetroles">
+        <MappingFragment StoreEntitySet="aspnetroles">
+          <ScalarProperty Name="Name" ColumnName="Name" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnetuserclaims">
+      <EntityTypeMapping TypeName="icreditModel.aspnetuserclaims">
+        <MappingFragment StoreEntitySet="aspnetuserclaims">
+          <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+          <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnetuserlogins">
+      <EntityTypeMapping TypeName="icreditModel.aspnetuserlogins">
+        <MappingFragment StoreEntitySet="aspnetuserlogins">
+          <ScalarProperty Name="UserId" ColumnName="UserId" />
+          <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+          <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="aspnetusers">
+      <EntityTypeMapping TypeName="icreditModel.aspnetusers">
+        <MappingFragment StoreEntitySet="aspnetusers">
+          <ScalarProperty Name="UserName" ColumnName="UserName" />
+          <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+          <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+          <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+          <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+          <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+          <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+          <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+          <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+          <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="ciudad">
+      <EntityTypeMapping TypeName="icreditModel.ciudad">
+        <MappingFragment StoreEntitySet="ciudad">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="CiudadId" ColumnName="CiudadId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cliente">
+      <EntityTypeMapping TypeName="icreditModel.cliente">
+        <MappingFragment StoreEntitySet="cliente">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="CiudadId" ColumnName="CiudadId" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Email" ColumnName="Email" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conceptoaporte">
+      <EntityTypeMapping TypeName="icreditModel.conceptoaporte">
+        <MappingFragment StoreEntitySet="conceptoaporte">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ConceptoAporteId" ColumnName="ConceptoAporteId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="conceptoretiro">
+      <EntityTypeMapping TypeName="icreditModel.conceptoretiro">
+        <MappingFragment StoreEntitySet="conceptoretiro">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="ConceptoRetiroId" ColumnName="ConceptoRetiroId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="consecutivo">
+      <EntityTypeMapping TypeName="icreditModel.consecutivo">
+        <MappingFragment StoreEntitySet="consecutivo">
+          <ScalarProperty Name="AbonoCapitalNro" ColumnName="AbonoCapitalNro" />
+          <ScalarProperty Name="AbonoNro" ColumnName="AbonoNro" />
+          <ScalarProperty Name="RetiroInteresNro" ColumnName="RetiroInteresNro" />
+          <ScalarProperty Name="CreditoNro" ColumnName="CreditoNro" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="contacto">
+      <EntityTypeMapping TypeName="icreditModel.contacto">
+        <MappingFragment StoreEntitySet="contacto">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="ConObserva" ColumnName="ConObserva" />
+          <ScalarProperty Name="ConEmail" ColumnName="ConEmail" />
+          <ScalarProperty Name="ConTelefono" ColumnName="ConTelefono" />
+          <ScalarProperty Name="ConNombre" ColumnName="ConNombre" />
+          <ScalarProperty Name="ContactoId" ColumnName="ContactoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="cuota">
+      <EntityTypeMapping TypeName="icreditModel.cuota">
+        <MappingFragment StoreEntitySet="cuota">
+          <ScalarProperty Name="SaldoInteres" ColumnName="SaldoInteres" />
+          <ScalarProperty Name="SaldoCapital" ColumnName="SaldoCapital" />
+          <ScalarProperty Name="AjusteAbonoInteres" ColumnName="AjusteAbonoInteres" />
+          <ScalarProperty Name="AjusteAbonoCapital" ColumnName="AjusteAbonoCapital" />
+          <ScalarProperty Name="AbonoInteres" ColumnName="AbonoInteres" />
+          <ScalarProperty Name="AbonoCapital" ColumnName="AbonoCapital" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="CreditoId" ColumnName="CreditoId" />
+          <ScalarProperty Name="CuotaId" ColumnName="CuotaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="divisioncredito">
+      <EntityTypeMapping TypeName="icreditModel.divisioncredito">
+        <MappingFragment StoreEntitySet="divisioncredito">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="DivisionCreditoId" ColumnName="DivisionCreditoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="empresa">
+      <EntityTypeMapping TypeName="icreditModel.empresa">
+        <MappingFragment StoreEntitySet="empresa">
+          <ScalarProperty Name="EmpMesActual" ColumnName="EmpMesActual" />
+          <ScalarProperty Name="EmpAnioActual" ColumnName="EmpAnioActual" />
+          <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+          <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+          <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="loghome">
+      <EntityTypeMapping TypeName="icreditModel.loghome">
+        <MappingFragment StoreEntitySet="loghome">
+          <ScalarProperty Name="Visitantes" ColumnName="Visitantes" />
+          <ScalarProperty Name="Id" ColumnName="Id" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="paramcorreo">
+      <EntityTypeMapping TypeName="icreditModel.paramcorreo">
+        <MappingFragment StoreEntitySet="paramcorreo">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Password" ColumnName="Password" />
+          <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+          <ScalarProperty Name="Puerto" ColumnName="Puerto" />
+          <ScalarProperty Name="Servidor" ColumnName="Servidor" />
+          <ScalarProperty Name="ParamCorreoId" ColumnName="ParamCorreoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retiro">
+      <EntityTypeMapping TypeName="icreditModel.retiro">
+        <MappingFragment StoreEntitySet="retiro">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="ConceptoRetiroId" ColumnName="ConceptoRetiroId" />
+          <ScalarProperty Name="SocioId" ColumnName="SocioId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="RetiroId" ColumnName="RetiroId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="retirointeres">
+      <EntityTypeMapping TypeName="icreditModel.retirointeres">
+        <MappingFragment StoreEntitySet="retirointeres">
+          <ScalarProperty Name="RetiroInteresNro" ColumnName="RetiroInteresNro" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="RetiroInteresId" ColumnName="RetiroInteresId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="socio">
+      <EntityTypeMapping TypeName="icreditModel.socio">
+        <MappingFragment StoreEntitySet="socio">
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="Nit" ColumnName="Nit" />
+          <ScalarProperty Name="SocioId" ColumnName="SocioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="tipocuota">
+      <EntityTypeMapping TypeName="icreditModel.tipocuota">
+        <MappingFragment StoreEntitySet="tipocuota">
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+          <ScalarProperty Name="TipoCuotaId" ColumnName="TipoCuotaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="usuario">
+      <EntityTypeMapping TypeName="icreditModel.usuario">
+        <MappingFragment StoreEntitySet="usuario">
+          <ScalarProperty Name="UsuEmail" ColumnName="UsuEmail" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="aspnetusersId" ColumnName="aspnetusersId" />
+          <ScalarProperty Name="UsuTelefono" ColumnName="UsuTelefono" />
+          <ScalarProperty Name="UsuNombre" ColumnName="UsuNombre" />
+          <ScalarProperty Name="UsuDocumento" ColumnName="UsuDocumento" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <AssociationSetMapping Name="aspnetuserroles" TypeName="icreditModel.aspnetuserroles" StoreEntitySet="aspnetuserroles">
+      <EndProperty Name="aspnetroles">
+        <ScalarProperty Name="Id" ColumnName="RoleId" />
+      </EndProperty>
+      <EndProperty Name="aspnetusers">
+        <ScalarProperty Name="Id" ColumnName="UserId" />
+      </EndProperty>
+    </AssociationSetMapping>
+    <EntitySetMapping Name="credito">
+      <EntityTypeMapping TypeName="icreditModel.credito">
+        <MappingFragment StoreEntitySet="credito">
+          <ScalarProperty Name="SaldoInteres" ColumnName="SaldoInteres" />
+          <ScalarProperty Name="SaldoCapital" ColumnName="SaldoCapital" />
+          <ScalarProperty Name="Estado" ColumnName="Estado" />
+          <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+          <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+          <ScalarProperty Name="CreditoNro" ColumnName="CreditoNro" />
+          <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+          <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+          <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+          <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+          <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+          <ScalarProperty Name="CapitalFinalCredito" ColumnName="CapitalFinalCredito" />
+          <ScalarProperty Name="InteresPrimCuota" ColumnName="InteresPrimCuota" />
+          <ScalarProperty Name="DivisionCreditoId" ColumnName="DivisionCreditoId" />
+          <ScalarProperty Name="PrimCuota" ColumnName="PrimCuota" />
+          <ScalarProperty Name="TipoCuotaId" ColumnName="TipoCuotaId" />
+          <ScalarProperty Name="Meses" ColumnName="Meses" />
+          <ScalarProperty Name="Interes" ColumnName="Interes" />
+          <ScalarProperty Name="Valor" ColumnName="Valor" />
+          <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="CreditoId" ColumnName="CreditoId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+    <EntitySetMapping Name="backup_cuota">
+      <EntityTypeMapping TypeName="icreditModel.backup_cuota">
+        <MappingFragment StoreEntitySet="backup_cuota">
+          <ScalarProperty Name="SaldoInteres" ColumnName="SaldoInteres" />
+          <ScalarProperty Name="SaldoCapital" ColumnName="SaldoCapital" />
+          <ScalarProperty Name="AjusteAbonoInteres" ColumnName="AjusteAbonoInteres" />
+          <ScalarProperty Name="AjusteAbonoCapital" ColumnName="AjusteAbonoCapital" />
+          <ScalarProperty Name="AbonoInteres" ColumnName="AbonoInteres" />
+          <ScalarProperty Name="AbonoCapital" ColumnName="AbonoCapital" />
+          <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+          <ScalarProperty Name="Numero" ColumnName="Numero" />
+          <ScalarProperty Name="CreditoId" ColumnName="CreditoId" />
+          <ScalarProperty Name="CuotaId" ColumnName="CuotaId" />
+          <ScalarProperty Name="AbonoCapitalId" ColumnName="AbonoCapitalId" />
+          <ScalarProperty Name="BackupCuotaId" ColumnName="BackupCuotaId" />
+        </MappingFragment>
+      </EntityTypeMapping>
+    </EntitySetMapping>
+  </EntityContainerMapping>
+</Mapping>

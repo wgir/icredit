@@ -1,0 +1,122 @@
+﻿@model CrediAdmin.Models.abonocapital
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles abonocapital</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Fecha)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Valor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Paga)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Paga)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Devolucion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Devolucion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Observacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreadoPor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CreadoPor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModificadoPor)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ModificadoPor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaModificacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AbonoNro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AbonoNro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEnvio)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEnvio)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.credito.TipoCuotaId)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.credito.TipoCuotaId)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = CrediAdmin.Util.MiUtil.encriptar(Model.AbonoCapitalId.ToString()) }) |
+    @Html.ActionLink("Volver a la Lista", "Index")
+</p>

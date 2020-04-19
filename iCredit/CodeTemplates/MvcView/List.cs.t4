@@ -1,0 +1,182 @@
+﻿<#@ template language="C#" HostSpecific="True" #>
+<#@ output extension=".cshtml" #>
+<#@ include file="Imports.include.t4" #>
+@*@model IEnumerable<#= "<" + ViewDataTypeName + ">" #>*@
+@model PagedList.IPagedList<#= "<" + ViewDataTypeName + ">" #>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+<#
+// The following chained if-statement outputs the file header code and markup for a partial view, a view using a layout page, or a regular view.
+if(IsPartialView) {
+#>
+
+<#
+} else if(IsLayoutPageSelected) {
+#>
+
+@{
+    ViewBag.Title = "<#= ViewName#>";
+<#
+if (!String.IsNullOrEmpty(LayoutPageFile)) {
+#>
+    Layout = "<#= LayoutPageFile#>";
+<#
+}
+#>
+}
+
+<h2><#= ViewDataTypeShortName#></h2>
+
+<#
+} else {
+#>
+
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title><#= ViewName #></title>
+</head>
+<body>
+<#
+    PushIndent("    ");
+}
+#>
+
+@using (Html.BeginForm("Index", "<#= ViewDataTypeName.Split('.').Last() #>", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="campos1" class="control-label">Filtro</label>
+        @Html.DropDownList("campos1", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="filtro1" class="control-label">Criterio</label>
+        @Html.TextBox("filtro1",  ViewBag.CurrentFilter as string, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Arch_Nombre" class="control-label"></label>
+        <input type="submit" value="Filtrar" class="form-control btn btn-warning" />
+    </div>
+}
+<br />
+
+<p>
+    <a href="@Url.Action("Create")"><img src="@Url.Content("~/Images/wznew.bmp")" alt="" /> @Html.ActionLink("Crear Nuevo", "Create")</a>
+</p>
+<table class="table table-striped">
+    <tr>
+<#
+	List<string> list = new List<string>();
+    list.Add("CREADOPOR");
+    list.Add("FECHACREACION");
+    list.Add("MODIFICADOPOR");
+    list.Add("FECHAMODIFICACION");
+
+IEnumerable<PropertyMetadata> properties = ModelMetadata.Properties;
+foreach (PropertyMetadata property in properties) {
+/// if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey && list.IndexOf(property.PropertyName.ToUpper())==-1) {
+  if (property.Scaffold && !property.IsForeignKey && list.IndexOf(property.PropertyName.ToUpper())==-1) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+        <th>
+			@Html.ActionLink("<#= GetValueExpression(property) #>", "Index", new { sortOrder = ViewBag.Sort<#= GetValueExpression(property) #>, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+            @*@Html.DisplayNameFor(model => model.<#= GetValueExpression(property) #>)*@
+        </th>
+<#
+    }
+}
+list.Add("ESTADO");
+#>
+       <th>Editar</th>
+       <th>Detalles</th>
+    </tr>
+	
+@foreach (var item in Model) {
+    <tr>
+<#
+foreach (PropertyMetadata property in properties) {
+
+///if (property.Scaffold && !property.IsPrimaryKey && !property.IsForeignKey && list.IndexOf(property.PropertyName.ToUpper())==-1) {
+   if (property.Scaffold && !property.IsForeignKey && list.IndexOf(property.PropertyName.ToUpper())==-1) {
+#>
+<#
+        // We do not want to show any association properties for which there is
+        // no associated foreign key.
+        if (property.IsAssociation && GetRelatedModelMetadata(property) == null) {
+            continue;
+        }
+#>
+        <td>
+            @Html.DisplayFor(modelItem => <#= "item." + GetValueExpression(property) #>)
+        </td>
+<#
+    }
+}#>
+		<td>
+            @if (item.Estado==true)
+            {
+               <text>Activo</text>
+            }
+            else
+            {
+               <text>Inactivo</text>
+            }
+        </td>
+<#
+string pkName = GetPrimaryKeyName();
+if (pkName != null) {
+#>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { id=CrediAdmin.Util.MiUtil.encriptar(item.<#= pkName #>.ToString()) }, new { @class = "btnEditar" }) 
+		</td>
+		<td>
+            @Html.ActionLink("Detalles", "Details", new { id=CrediAdmin.Util.MiUtil.encriptar(item.<#= pkName #>.ToString()) }, new { @class = "btnVerDetalles" }) 
+          
+        </td>
+<#
+} else {
+#>
+        <td>
+            @Html.ActionLink("Editar", "Edit", new { /* id=item.PrimaryKey */ }, new { @class = "btnEditar" }) 
+    	</td>
+		<td>
+           @Html.ActionLink("Detalles", "Details", new { /* id=item.PrimaryKey */ }, new { @class = "btnVerDetalles" }) 
+        </td>
+<#
+}
+#>
+    </tr>
+}
+
+</table>
+
+<br />
+Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+@Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter }))
+
+<#
+// The following code closes the tag used in the case of a view using a layout page and the body and html tags in the case of a regular view page
+#>
+<#
+if(!IsPartialView && !IsLayoutPageSelected) {
+    ClearIndent();
+#>
+</body>
+</html>
+<#
+}
+#>
+<#@ include file="ModelMetadataFunctions.cs.include.t4" #>

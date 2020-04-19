@@ -1,0 +1,57 @@
+﻿@model CrediAdmin.ViewModels.ImpresionAbono
+<!-- <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />  -->
+
+<table>
+    <tr>
+        <td>
+            <img src="@Url.Content(@Model.LogoEmpresa)" width="220" height="120" />
+        </td>
+        <td>
+            <h2>Comprobante de Abono</h2>
+        </td>
+    </tr>
+    <tr>
+        <td>
+            <h3>@Html.DisplayFor(model => model.EmpresaNombre)</h3>
+        </td>
+    </tr>
+</table>
+<!-- <h3>Nit: @Html.DisplayFor(model => model.EmpresaNit)</h3> -->
+
+    <table width="100%" border="0">
+         <tr><th align="left">Cliente:</th> 
+         <td>@Html.DisplayFor(model => model.ClienteNit) </td>
+         <td colspan="6">@Html.DisplayFor(model => model.ClienteNombre) </td></tr>
+            
+            
+        <tr><th align="left">Credito:</th> 
+        <td>@Html.DisplayFor(model => model.CreditoNro) </td>
+         <th align="left">Valor:</th> <td> @Html.DisplayFor(model => model.CreditoValor)</td>
+         <th align="left">Numero de Cuotas:</th><td colspan="4">@Html.DisplayFor(model => model.CreditoCantCuotas) </td>
+        </tr>
+        
+        <tr>
+         <th align="left">Fecha del Abono:</th><td colspan="8"> @Html.DisplayFor(model => model.AbonoFecha) </td>
+        
+        </tr>
+               
+         <tr>
+         <th align="left">Abono a la Cuota Nro:</th><td> @Html.DisplayFor(model => model.CuotaNro) </td>
+         <th align="left">Valor de la Cuota:</th><td> @Html.DisplayFor(model => model.CuotaValor) </td>
+         <th align="left">Nro Cuotas Restantes:</th><td colspan="3">
+             @{ int restantes = Model.CreditoCantCuotas - Model.CuotaNro;
+                                                } @String.Format("{0:g}", restantes) </td>
+        </tr>
+        <tr>
+        <th align="left">Abono Nro</th><td> @Html.DisplayFor(model => model.AbonoNro) </td>
+        <th align="left">Abono a Interes</th><td> @Html.DisplayFor(model => model.AbonoInteres) </td>
+        <th align="left">Abono a Capital</th><td> @Html.DisplayFor(model => model.AbonoCapital) </td>
+        <th align="left">Total Abono</th><td> @Html.DisplayFor(model => model.TotalAbono) </td>
+        </tr>
+        <tr><th align="left">Saldo Cuota</th><td> @Html.DisplayFor(model => model.SaldoCuota) </td>
+        <th align="left">Saldo Capital Credito</th><td> @Html.DisplayFor(model => model.CreditoSaldoCapital) </td>
+        <th align="left">Saldo Interes Credito</th><td > @Html.DisplayFor(model => model.CreditoSaldoInteres) </td>
+        <th align="left">Total Saldo Credito</th><td >@{ decimal? totalSaldo = Model.CreditoSaldoCapital + Model.CreditoSaldoInteres;
+                                                } @String.Format("{0:C}", totalSaldo) </td>
+                                                 </tr>
+ </table>

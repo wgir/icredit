@@ -1,0 +1,103 @@
+﻿@using CrediAdmin.Helper
+
+<div class="navbar navbar-inverse navbar-fixed-top">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            @if (Session["EmpresaNombre"] == null)
+            {
+                @Html.ActionLink("iCredit", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            }
+            else
+            {
+                @Html.ActionLink(Session["EmpresaNombre"].ToString(), "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            }
+            
+        </div>
+        <div class="navbar-collapse collapse">
+            <ul class="nav navbar-nav">
+                @*<li>@Html.ActionLink("Home", "Index", "Home")</li>*@
+                @*@Html.MenuLink("Home", "Index", "Home")*@
+                
+                @if (Request.IsAuthenticated)
+                {
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Registro<span class="caret"></span></a>
+                    <ul class="dropdown-menu" role="menu">
+                    @if (ViewContext.HttpContext.User.IsInRole("Master") || ViewContext.HttpContext.User.IsInRole("Administrador"))
+                    {
+                        @Html.MenuLink("Clientes", "Index", "Cliente")
+                        @Html.MenuLink("Creditos", "Index", "Credito")
+                    }
+                    @if (ViewContext.HttpContext.User.IsInRole("Master") || ViewContext.HttpContext.User.IsInRole("Administrador")
+                         || ViewContext.HttpContext.User.IsInRole("Cobrador"))
+                    {
+                        @*@Html.MenuLink("Cuotas x Cobrar", "Index", "CuotasxCobrar")*@
+                        <li>@Html.ActionLink("Cuotas x Cobrar", "../CuotasxCobrar", new { controlador = "CuotasxCobrar" })</li>
+                        <li>@Html.ActionLink("Cuotas Pagadas", "../CuotasPagadas", new { controlador = "CuotasPagadas" })</li>
+                    }
+                    </ul>
+                </li>
+                
+                
+                if (ViewContext.HttpContext.User.IsInRole("Master") || ViewContext.HttpContext.User.IsInRole("Administrador"))
+                {
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Utilidades<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li>@Html.ActionLink("Estado de Empresa", "Index", "EstadoEmpresa")</li>
+                            <li>@Html.ActionLink("Retiros de Utilidades", "Index", "RetiroInteres")</li>
+
+                        </ul>
+                    </li>
+
+                    @*@Html.MenuLink("Estaciones", "Index", "Estacion")*@
+                  
+                    <li class="dropdown"><a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Configuracion<span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                           
+                                @Html.MenuLink("Empresa", "Index", "Empresa")
+                           
+                            @Html.MenuLink("Socios", "Index", "Socio")
+                            
+                            @*@Html.MenuLink("Perfiles", "Index", "Perfil")*@
+                            <li class="divider"></li>
+                            @*@Html.MenuLink("Instituciones", "Index", "Institucion")*@
+                            @Html.MenuLink("Conceptos Aportes", "Index", "ConceptoAportes")
+                            @Html.MenuLink("Conceptos Retiros", "Index", "ConceptoRetiros")
+                            <li class="divider"></li>
+                            <li>@Html.ActionLink("Ciudades", "Index", "Ciudad")</li>
+                            <li>@Html.ActionLink("Usuarios", "Index", "Usuario")</li>
+                            @*<li>@Html.ActionLink("Parametros de Correo", "Index", "ParamCorreo")</li>*@
+                            @*@Html.MenuLink("Departamentos", "Index", "Departamento")
+                            @Html.MenuLink("Ciudades", "Index", "Ciudad")*@
+                            @*<li class="divider"></li>*@
+                            @*<li><a href="#">One more separated link</a></li>*@
+                        </ul>
+                    </li>
+
+                }
+                    if (ViewContext.HttpContext.User.IsInRole("Master"))
+                    {
+                            @Html.MenuLink("Contactos", "Index", "Contacto")
+                    }
+
+                }
+                else
+                {
+                    @Html.MenuLink("Nosotros", "About", "Home")
+                    
+                }
+                @Html.MenuLink("Contactenos", "Contact", "Home")
+                
+            </ul>
+            @Html.Partial("_LoginPartial")
+            @*@Html.Partial("_LoginPartial1")*@
+        </div>
+    </div>
+</div>
+

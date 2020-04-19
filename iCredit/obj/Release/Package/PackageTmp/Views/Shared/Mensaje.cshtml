@@ -1,0 +1,24 @@
+﻿@{
+        if (ViewBag.Layout==0)
+        {
+            Layout = null;
+        }
+        ViewBag.Title = "Mensaje";
+    }
+<br />
+<br />
+<p class="h2 @ViewBag.tipo">@ViewBag.mensaje</p>
+@*<div style="color:#FF0000;">
+    @ViewBag.mensaje
+</div>*@
+
+<a href="@Url.Action(@ViewBag.action, @ViewBag.controller)" class="btn btn-primary">
+    Aceptar
+    <span class="glyphicon glyphicon-ok" aria-hidden="true"></span>
+</a>
+
+@*@Html.ActionLink("LinkText", "FooAction", "FooController", null, new { @class = "btn btn-info" })*@
+@*<p>
+    <a href="javascript:window.history.back();">&laquo; Volver atrás</a>
+  
+</p>*@

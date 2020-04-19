@@ -1,0 +1,10 @@
+﻿run %windir%\Microsoft.NET\Framework\v4.0.21006\aspnet_regiis.exe -i
+
+add json type on iis http://forums.iis.net/t/1205438.aspx
+
+
+Problema solucionado de firefox no muestra correctamente el reporte:
+http://blog-mstechnology.blogspot.com/2009/08/sql-server-reporting-services-ssrs.html
+
+
+para que funcione rotativa en el servidor el pool de aplicaciones del iis debe ejecutar aplicaciones de 32bits  

@@ -1,0 +1,73 @@
+﻿@model CrediAdmin.ViewModels.ImpresionAbono
+ <link href="@Url.Content("~/Content/bootstrap.css")" rel="stylesheet" type="text/css" />  
+
+<div class="container">
+    <br />
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1"><img src="@Url.Content(@Model.LogoEmpresa)" width="220" height="120" /></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-1"></div>
+        <div class="col-md-4"><h2>Comprobante de Abono</h2></div>
+        <div class="col-md-4"></div>
+    </div>
+    <div class="row">
+        <div class="col-md-1"></div>
+        <div class="col-md-1"><h3>@Html.DisplayFor(model => model.EmpresaNombre)</h3></div>
+        <div class="col-md-1"><h3>@Html.DisplayFor(model => model.EmpresaNit)</h3></div>
+        <div class="col-md-9"></div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"><strong>Cliente:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.ClienteNit) </div>
+        <div class="col-md-8">@Html.DisplayFor(model => model.ClienteNombre)</div>
+        @*<div class="col-md-1"></div>
+        <div class="col-md-8"></div>*@
+    </div>
+    <div class="row">
+        <div class="col-md-2"><strong>Credito:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.CreditoNro) </div>
+        <div class="col-md-2"><strong>Valor:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.CreditoValor)</div>
+        <div class="col-md-2"><strong>Numero de Cuotas:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.CreditoCantCuotas)</div>
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"><strong>Fecha del Abono:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.AbonoFecha) </div>
+        <div class="col-md-2"><strong>Abono a la Cuota Nro:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.CuotaNro)</div>
+        <div class="col-md-2"><strong>Nro Cuotas Restantes:</strong></div>
+        <div class="col-md-2">@{ int restantes = Model.CreditoCantCuotas - Model.CuotaNro;
+        } @String.Format("{0:g}", restantes)</div>
+    </div>
+
+
+    <div class="row">
+        <div class="col-md-2"><strong>Abono Nro:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.AbonoNro) </div>
+        <div class="col-md-2"><strong>Abono a Interes:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.AbonoInteres)</div>
+        <div class="col-md-2"><strong>Abono a Capital:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.AbonoCapital)</div>
+        <div class="col-md-2"><strong>Total Abono:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.TotalAbono)</div>
+
+    </div>
+
+    <div class="row">
+        <div class="col-md-2"><strong>Saldo Cuota:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.SaldoCuota) </div>
+        <div class="col-md-2"><strong>Saldo Capital Credito:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.CreditoSaldoCapital)</div>
+        <div class="col-md-2"><strong>Saldo Interes Credito:</strong></div>
+        <div class="col-md-2">@Html.DisplayFor(model => model.CreditoSaldoInteres)</div>
+        <div class="col-md-2"><strong>Total Saldo Credito:</strong></div>
+        <div class="col-md-2">@{ double totalSaldo = Model.CreditoSaldoCapital + Model.CreditoSaldoInteres;
+        } @String.Format("{0:C}", totalSaldo)</div>
+    </div>
+
+      
+    </div>

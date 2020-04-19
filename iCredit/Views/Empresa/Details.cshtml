@@ -1,0 +1,90 @@
+﻿@model CrediAdmin.Models.empresa
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles Empresa</h2>
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Direccion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Direccion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Telefono)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Estado)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CreadoPor)
+        </dt>
+
+        <dd>
+            @CrediAdmin.Util.MiUtil.getNombreUsuario(0,Model.CreadoPor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaCreacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ModificadoPor)
+        </dt>
+
+        <dd>
+            @CrediAdmin.Util.MiUtil.getNombreUsuario(0, Model.ModificadoPor)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaModificacion)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaModificacion)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = CrediAdmin.Util.MiUtil.encriptar(Model.EmpresaId.ToString()) }) |
+    @Html.ActionLink("Volver a la Lista", "Index")
+</p>

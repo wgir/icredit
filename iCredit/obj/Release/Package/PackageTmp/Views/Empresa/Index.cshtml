@@ -1,0 +1,126 @@
+﻿@*@model IEnumerable<CrediAdmin.Models.empresa>*@
+@model PagedList.IPagedList<CrediAdmin.Models.empresa>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Empresa</h2>
+
+
+@*@using (Html.BeginForm("Index", "empresa", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="campos1" class="control-label">Filtro</label>
+        @Html.DropDownList("campos1", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="filtro1" class="control-label">Criterio</label>
+        @Html.TextBox("filtro1",  ViewBag.CurrentFilter as string, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Arch_Nombre" class="control-label"></label>
+        <input type="submit" value="Filtrar" class="form-control btn btn-warning" />
+    </div>
+}*@
+<br />
+
+@*<p>
+    <a href="@Url.Action("Create")"><img src="@Url.Content("~/Images/wznew.bmp")" alt="" /> @Html.ActionLink("Crear Nuevo", "Create")</a>
+</p>*@
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            @*<th>
+                    @Html.ActionLink("EmpresaId", "Index", new { sortOrder = ViewBag.SortEmpresaId, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                </th>*@
+            <th>
+                @Html.ActionLink("Nit", "Index", new { sortOrder = ViewBag.SortNit, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Nit)*@
+            </th>
+            <th>
+                @Html.ActionLink("Nombre", "Index", new { sortOrder = ViewBag.SortNombre, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Nombre)*@
+            </th>
+            <th>
+                @Html.ActionLink("Periodo Actual", "Index", new { sortOrder = ViewBag.SortNombre, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Nombre)*@
+            </th>
+            <th>
+                @Html.ActionLink("Email", "Index", new { sortOrder = ViewBag.SortEmail, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+
+            </th>
+            <th>
+                @Html.ActionLink("Direccion", "Index", new { sortOrder = ViewBag.SortDireccion, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Direccion)*@
+            </th>
+            <th>
+                @Html.ActionLink("Telefono", "Index", new { sortOrder = ViewBag.SortTelefono, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Telefono)*@
+            </th>
+            <th>
+                @Html.ActionLink("Estado", "Index", new { sortOrder = ViewBag.SortEstado, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Estado)*@
+            </th>
+            <th>Editar</th>
+            <th>Detalles</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.EmpresaId)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nit)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpAnioActual)
+                    @{
+                        @CrediAdmin.Util.MiUtil.getNombreMes((int)item.EmpMesActual);
+                    }
+
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.EmpEmail)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Direccion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Telefono)
+                </td>
+                <td>
+                    @if (item.Estado == true)
+                    {
+                        <text>Activo</text>
+                    }
+                    else
+                    {
+                        <text>Inactivo</text>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = CrediAdmin.Util.MiUtil.encriptar(item.EmpresaId.ToString()) }, new { @class = "btnEditar" })
+                </td>
+                <td>
+                    @Html.ActionLink("Detalles", "Details", new { id = CrediAdmin.Util.MiUtil.encriptar(item.EmpresaId.ToString()) }, new { @class = "btnVerDetalles" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+    <br />
+    Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter }))
+

@@ -1,0 +1,126 @@
+﻿@model CrediAdmin.Models.EnviarCorreo
+
+@{
+    ViewBag.Title = "Envio Correo";
+}
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+<style type="text/css">
+/*.editor-field 
+{
+  margin: 0.1em 0 0 0;
+  text-transform:none;
+}*/
+.text-box {
+    width: 30em;
+    text-transform: none;
+}
+</style>
+
+<h2>Enviando Email</h2>
+
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>EnviarCorreo</legend>
+         <table border = "0">
+         <tr>
+         <td>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Servidor)
+        </div>
+         <div class="editor-field">
+            @Html.EditorFor(model => model.Servidor)
+            @Html.ValidationMessageFor(model => model.Servidor)
+        </div>
+        </td>
+       <td>
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Puerto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Puerto)
+            @Html.ValidationMessageFor(model => model.Puerto) </div> </td>
+         </tr>
+         
+         <tr>
+            <td>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.Usuario)
+            </div> 
+            <div class="editor-field">
+            @Html.EditorFor(model => model.Usuario)
+            @Html.ValidationMessageFor(model => model.Usuario)
+            </div>
+            </td>
+            
+            <td>
+            <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+            </div>
+            <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+            </div>
+            </td>
+        </tr>
+        <tr>
+        <td colspan="2">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Destinatario)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Destinatario, new { style = "Width:500px" })
+            @Html.ValidationMessageFor(model => model.Destinatario)
+        </div>
+        </td>
+        </tr>
+        <tr>
+        <td colspan="2">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Asunto)
+        </div>
+        <div class="editor-field">
+            @Html.TextBoxFor(model => model.Asunto, new { style = "Width:500px" })
+            @Html.ValidationMessageFor(model => model.Asunto)
+        </div>
+        </td>
+        </tr>
+        <tr>
+        <td colspan="2">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Mensaje)
+        </div>
+        <div class="editor-field">
+            @Html.TextAreaFor(model => model.Mensaje, new { cols = "50%", rows = "3" })
+            @Html.ValidationMessageFor(model => model.Mensaje)
+          
+        </div>
+        </td>
+        </tr>
+        <tr>
+        <td colspan="2">
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Adjunto)
+        </div>
+        <div class="editor-field">
+            @Html.DisplayFor(model => model.Adjunto)
+            @Html.HiddenFor(model => model.Adjunto)
+            @Html.ValidationMessageFor(model => model.Adjunto)
+        </div>
+        </td>
+        </tr>
+        </table>
+        <p>
+            <input type="submit" value="Enviar" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @*Html.ActionLink("Back to List", "Index")*@
+</div>

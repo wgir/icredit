@@ -1,0 +1,106 @@
+﻿@model IEnumerable<CrediAdmin.Models.paramcorreo>
+@*@model PagedList.IPagedList<CrediAdmin.Models.paramcorreo>*@
+@*@using PagedList.Mvc;*@
+@*<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />*@
+
+
+
+@*@using (Html.BeginForm("Index", "paramcorreo", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="campos1" class="control-label">Filtro</label>
+        @Html.DropDownList("campos1", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="filtro1" class="control-label">Criterio</label>
+        @Html.TextBox("filtro1",  ViewBag.CurrentFilter as string, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Arch_Nombre" class="control-label"></label>
+        <input type="submit" value="Filtrar" class="form-control btn btn-warning" />
+    </div>
+}
+<br />*@
+<h2>Parametros Correo</h2>
+@if (ViewBag.CantParamCorreos < 1)
+{
+    <p>
+        <a href="@Url.Action("Create")"><img src="@Url.Content("~/Images/wznew.bmp")" alt="" /> @Html.ActionLink("Crear Nuevo", "Create")</a>
+    </p>
+}
+
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            @*<th>
+                    @Html.ActionLink("Id", "Index", new { sortOrder = ViewBag.SortId, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                </th>*@
+            <th>
+                @Html.ActionLink("Servidor", "Index", new { sortOrder = ViewBag.SortServidor, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Servidor)*@
+            </th>
+            <th>
+                @Html.ActionLink("Puerto", "Index", new { sortOrder = ViewBag.SortPuerto, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Puerto)*@
+            </th>
+            <th>
+                @Html.ActionLink("Usuario", "Index", new { sortOrder = ViewBag.SortUsuario, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Usuario)*@
+            </th>
+            <th>
+                @Html.ActionLink("Password", "Index", new { sortOrder = ViewBag.SortPassword, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Password)*@
+            </th>
+
+
+            <th>Editar</th>
+            <th>Detalles</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Id)
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.Servidor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Puerto)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Usuario)
+                </td>
+                <td>
+                    @*@Html.DisplayFor(modelItem => item.Password)*@
+                </td>
+
+
+                @*<td>
+                        @if (item.Estado==true)
+                        {
+                           <text>Activo</text>
+                        }
+                        else
+                        {
+                           <text>Inactivo</text>
+                        }
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = CrediAdmin.Util.MiUtil.encriptar(item.ParamCorreoId.ToString()) }, new { @class = "btnEditar" })
+                </td>
+                <td>
+                    @Html.ActionLink("Detalles", "Details", new { id = CrediAdmin.Util.MiUtil.encriptar(item.ParamCorreoId.ToString()) }, new { @class = "btnVerDetalles" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+    <br />
+    @*Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+        @Html.PagedListPager(Model, page => Url.Action("Index",
+                    new { page, sortOrder = ViewBag.CurrentSort, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter }))*@
+

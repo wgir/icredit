@@ -1,0 +1,59 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <title>iCredit - Plataforma Administradora de Creditos</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="keywords" content="Creditos, Prestamos, Software Creditos, software Prestamos,
+                                    aplicacion creditos, Gota, Plataforma, calcular credito
+                                    cuota,cuotas, credito, prestamo,cooperativa, fondo de ahorro y credito">
+    <meta name="description" content="iCredit - Plataforma para la administracion de Creditos o Prestamos de una empresa, 
+           los socios de la empresa hacen aportes y retiros de capital para poder generar creditos a clientes,
+           a diferentes tasas de interes y plazos personalizados. Al generar los creditos se generan unas cuotas que 
+           contienen abono a acapital y abono a interes, a estas cuotas se pueden hacer abonos totales o parciales, 
+          y llevar un control de los abonos que realizan los clientes">
+
+    @Styles.Render("~/Content/css")
+    @Styles.Render("~/Content/jqueryui")
+    @Scripts.Render("~/bundles/modernizr")
+    @Scripts.Render("~/bundles/jquery")
+    @*@if (Request.IsAuthenticated)*@
+    
+    
+    <link href="~/Content/SiteLogueado.css" rel="stylesheet" type="text/css" />
+    
+
+    </head>
+        <body>
+            @Html.Partial("_Menu")
+            <div class="container body-content">
+                @RenderBody()
+                <hr />
+                <footer>
+                    <p>&copy; @DateTime.Now.Year - iCredit - Adisoft</p>
+                </footer>
+            </div>
+
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/jqueryui")
+        <script>
+            @*$(function () {
+                $(".jqueryui-marker-datepicker")
+                    .datepicker({ dateFormat: "dd/mm/yy", changeYear: true, showOn: "button" })
+                    .css("display", "inline-block").next("button")
+                    .button({ icons: { primary: "ui-icon-calendar" }, label: "Select a date", text: false });
+            });*@
+            $(function () {
+                $(".jqueryui-marker-datepicker").datepicker({ dateFormat: "dd/mm/yy", changeYear: true })
+                    .css("display", "inline-block").next("button")
+                    .button({ icons: { primary: "ui-icon-calendar" }, label: "Select a date", text: false });
+
+            });
+            </script>
+
+        @RenderSection("scripts", required: false)
+            <!-- add scripts -->
+            @*<script src="Content/jquery-ui-1.11.4.custom/jquery-ui.js"></script>
+            <script src="Content/jquery-ui-1.11.4.custom/jquery-ui.min.js"></script>*@    
+        </body>
+        </html>

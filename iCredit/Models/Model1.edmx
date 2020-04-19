@@ -1,0 +1,2158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="icreditModel.Store" Provider="MySql.Data.MySqlClient" ProviderManifestToken="5.5" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="__migrationhistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="varchar" MaxLength="255" Nullable="false" />
+          <Property Name="CreatedOn" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Model" Type="longblob" Nullable="false" />
+          <Property Name="ProductVersion" Type="varchar" MaxLength="32" Nullable="false" />
+        </EntityType>
+        <EntityType Name="abono">
+          <Key>
+            <PropertyRef Name="AbonoId" />
+          </Key>
+          <Property Name="AbonoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CuotaId" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Paga" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Devolucion" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Observacion" Type="text" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+          <Property Name="AbonoNro" Type="int" />
+          <Property Name="FechaEnvio" Type="datetime" Precision="0" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="abonocapital">
+          <Key>
+            <PropertyRef Name="AbonoCapitalId" />
+          </Key>
+          <Property Name="AbonoCapitalId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreditoId" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Observacion" Type="text" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+          <Property Name="AbonoCapitalNro" Type="int" />
+          <Property Name="FechaEnvio" Type="datetime" Precision="0" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aporte">
+          <Key>
+            <PropertyRef Name="AporteId" />
+          </Key>
+          <Property Name="AporteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="SocioId" Type="int" Nullable="false" />
+          <Property Name="ConceptoAporteId" Type="int" Nullable="false" />
+          <Property Name="Observacion" Type="text" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="aspnetroles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Name" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetuserclaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ClaimType" Type="longtext" />
+          <Property Name="ClaimValue" Type="longtext" />
+        </EntityType>
+        <EntityType Name="aspnetuserlogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="ProviderKey" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetuserroles">
+          <Key>
+            <PropertyRef Name="UserId" />
+            <PropertyRef Name="RoleId" />
+          </Key>
+          <Property Name="UserId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="RoleId" Type="varchar" MaxLength="128" Nullable="false" />
+        </EntityType>
+        <EntityType Name="aspnetusers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="256" />
+          <Property Name="EmailConfirmed" Type="bool" Nullable="false" />
+          <Property Name="PasswordHash" Type="longtext" />
+          <Property Name="SecurityStamp" Type="longtext" />
+          <Property Name="PhoneNumber" Type="longtext" />
+          <Property Name="PhoneNumberConfirmed" Type="bool" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="bool" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="datetime" Precision="0" />
+          <Property Name="LockoutEnabled" Type="bool" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="int" Nullable="false" />
+          <Property Name="UserName" Type="varchar" MaxLength="256" Nullable="false" />
+        </EntityType>
+        <EntityType Name="backup_cuota">
+          <Key>
+            <PropertyRef Name="BackupCuotaId" />
+          </Key>
+          <Property Name="BackupCuotaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="AbonoCapitalId" Type="int" Nullable="false" />
+          <Property Name="CuotaId" Type="int" Nullable="false" />
+          <Property Name="CreditoId" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="AbonoCapital" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AbonoInteres" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AjusteAbonoCapital" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AjusteAbonoInteres" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SaldoCapital" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SaldoInteres" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="CiudadId" />
+          </Key>
+          <Property Name="CiudadId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="254" />
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nit" Type="varchar" MaxLength="30" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="500" />
+          <Property Name="Telefono" Type="varchar" MaxLength="200" />
+          <Property Name="Email" Type="varchar" MaxLength="200" />
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+          <Property Name="CiudadId" Type="int" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="conceptoaporte">
+          <Key>
+            <PropertyRef Name="ConceptoAporteId" />
+          </Key>
+          <Property Name="ConceptoAporteId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="254" />
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="conceptoretiro">
+          <Key>
+            <PropertyRef Name="ConceptoRetiroId" />
+          </Key>
+          <Property Name="ConceptoRetiroId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="254" />
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="consecutivo">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="CreditoNro" Type="int" />
+          <Property Name="RetiroInteresNro" Type="int" />
+          <Property Name="AbonoNro" Type="int" />
+          <Property Name="AbonoCapitalNro" Type="int" />
+        </EntityType>
+        <EntityType Name="contacto">
+          <Key>
+            <PropertyRef Name="ContactoId" />
+          </Key>
+          <Property Name="ContactoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="ConNombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="ConTelefono" Type="varchar" MaxLength="200" />
+          <Property Name="ConEmail" Type="varchar" MaxLength="200" />
+          <Property Name="ConObserva" Type="varchar" MaxLength="1000" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+        </EntityType>
+        <EntityType Name="credito">
+          <Key>
+            <PropertyRef Name="CreditoId" />
+          </Key>
+          <Property Name="CreditoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="ClienteId" Type="int" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Interes" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Meses" Type="int" Nullable="false" />
+          <Property Name="TipoCuotaId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="PrimCuota" Type="bool" Nullable="false" />
+          <Property Name="DivisionCreditoId" Type="int" Nullable="false" />
+          <Property Name="InteresPrimCuota" Type="bool" Nullable="false" />
+          <Property Name="CapitalFinalCredito" Type="bool" Nullable="false" />
+          <Property Name="Observacion" Type="text" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+          <Property Name="CreditoNro" Type="int" />
+          <Property Name="EmpresaId" Type="int" />
+          <Property Name="UsuarioId" Type="int" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="SaldoCapital" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SaldoInteres" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="cuota">
+          <Key>
+            <PropertyRef Name="CuotaId" />
+          </Key>
+          <Property Name="CuotaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="CreditoId" Type="int" Nullable="false" />
+          <Property Name="Numero" Type="int" Nullable="false" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="AbonoCapital" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AbonoInteres" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AjusteAbonoCapital" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="AjusteAbonoInteres" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SaldoCapital" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="SaldoInteres" Type="decimal" Precision="10" Scale="2" />
+        </EntityType>
+        <EntityType Name="divisioncredito">
+          <Key>
+            <PropertyRef Name="DivisionCreditoId" />
+          </Key>
+          <Property Name="DivisionCreditoId" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="bool" />
+        </EntityType>
+        <EntityType Name="empresa">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nit" Type="varchar" MaxLength="30" />
+          <Property Name="Nombre" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="500" />
+          <Property Name="Telefono" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+          <Property Name="LogoUrl" Type="varchar" MaxLength="500" />
+          <Property Name="EmpEmail" Type="varchar" MaxLength="200" Nullable="false" />
+          <Property Name="EmpAnioActual" Type="int" />
+          <Property Name="EmpMesActual" Type="int" />
+        </EntityType>
+        <EntityType Name="loghome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="bigint" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Visitantes" Type="bigint" />
+        </EntityType>
+        <EntityType Name="paramcorreo">
+          <Key>
+            <PropertyRef Name="ParamCorreoId" />
+          </Key>
+          <Property Name="ParamCorreoId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Servidor" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Puerto" Type="int" Nullable="false" />
+          <Property Name="Usuario" Type="varchar" MaxLength="100" />
+          <Property Name="Password" Type="varchar" MaxLength="100" />
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bool" Nullable="false" />
+          <Property Name="CreadoPor" Type="longtext" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="longtext" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="retiro">
+          <Key>
+            <PropertyRef Name="RetiroId" />
+          </Key>
+          <Property Name="RetiroId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="SocioId" Type="int" Nullable="false" />
+          <Property Name="ConceptoRetiroId" Type="int" Nullable="false" />
+          <Property Name="Observacion" Type="text" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="retirointeres">
+          <Key>
+            <PropertyRef Name="RetiroInteresId" />
+          </Key>
+          <Property Name="RetiroInteresId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Valor" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="Fecha" Type="datetime" Precision="0" Nullable="false" />
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="Observacion" Type="text" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="RetiroInteresNro" Type="int" />
+        </EntityType>
+        <EntityType Name="socio">
+          <Key>
+            <PropertyRef Name="SocioId" />
+          </Key>
+          <Property Name="SocioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nit" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" Nullable="false" />
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+        </EntityType>
+        <EntityType Name="tipocuota">
+          <Key>
+            <PropertyRef Name="TipoCuotaId" />
+          </Key>
+          <Property Name="TipoCuotaId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="100" />
+          <Property Name="Estado" Type="bool" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="UsuDocumento" Type="varchar" MaxLength="100" />
+          <Property Name="UsuNombre" Type="varchar" MaxLength="255" />
+          <Property Name="UsuTelefono" Type="varchar" MaxLength="255" />
+          <Property Name="aspnetusersId" Type="varchar" MaxLength="128" Nullable="false" />
+          <Property Name="EmpresaId" Type="int" Nullable="false" />
+          <Property Name="CreadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaCreacion" Type="datetime" Precision="0" />
+          <Property Name="ModificadoPor" Type="varchar" MaxLength="128" />
+          <Property Name="FechaModificacion" Type="datetime" Precision="0" />
+          <Property Name="Estado" Type="bit" Nullable="false" />
+          <Property Name="UsuEmail" Type="varchar" MaxLength="200" />
+        </EntityType>
+        <Association Name="abonoCapital_bakCuota">
+          <End Role="abonocapital" Type="Self.abonocapital" Multiplicity="1" />
+          <End Role="backup_cuota" Type="Self.backup_cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="abonocapital">
+              <PropertyRef Name="AbonoCapitalId" />
+            </Principal>
+            <Dependent Role="backup_cuota">
+              <PropertyRef Name="AbonoCapitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="abonoCapital_Credito">
+          <End Role="credito" Type="Self.credito" Multiplicity="1" />
+          <End Role="abonocapital" Type="Self.abonocapital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credito">
+              <PropertyRef Name="CreditoId" />
+            </Principal>
+            <Dependent Role="abonocapital">
+              <PropertyRef Name="CreditoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Claims">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserclaims" Type="Self.aspnetuserclaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserlogins" Type="Self.aspnetuserlogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Roles">
+          <End Role="aspnetusers" Type="Self.aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserroles">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ciudad_empresa">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1" />
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cliente_ciudad">
+          <End Role="ciudad" Type="Self.ciudad" Multiplicity="0..1" />
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="CiudadId" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="CiudadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Abono_Cuota_CuotaId">
+          <End Role="cuota" Type="Self.cuota" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="abono" Type="Self.abono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuota">
+              <PropertyRef Name="CuotaId" />
+            </Principal>
+            <Dependent Role="abono">
+              <PropertyRef Name="CuotaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aporte_ConceptoAporte_ConceptoAporteId">
+          <End Role="conceptoaporte" Type="Self.conceptoaporte" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aporte" Type="Self.aporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="conceptoaporte">
+              <PropertyRef Name="ConceptoAporteId" />
+            </Principal>
+            <Dependent Role="aporte">
+              <PropertyRef Name="ConceptoAporteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aporte_Socio_SocioId">
+          <End Role="socio" Type="Self.socio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aporte" Type="Self.aporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="socio">
+              <PropertyRef Name="SocioId" />
+            </Principal>
+            <Dependent Role="aporte">
+              <PropertyRef Name="SocioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Empresa_EmpresaId">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cliente" Type="Self.cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConceptoAporte_Empresa_EmpresaId">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1" />
+          <End Role="conceptoaporte" Type="Self.conceptoaporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="conceptoaporte">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConceptoRetiro_Empresa_EmpresaId">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1" />
+          <End Role="conceptoretiro" Type="Self.conceptoretiro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="conceptoretiro">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_consecutivo_empresa">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1" />
+          <End Role="consecutivo" Type="Self.consecutivo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="consecutivo">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credito_Cliente_ClienteId">
+          <End Role="cliente" Type="Self.cliente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="credito" Type="Self.credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="credito">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credito_DivisionCredito_DivisionCreditoId">
+          <End Role="divisioncredito" Type="Self.divisioncredito" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="credito" Type="Self.credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="divisioncredito">
+              <PropertyRef Name="DivisionCreditoId" />
+            </Principal>
+            <Dependent Role="credito">
+              <PropertyRef Name="DivisionCreditoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_credito_empresa_1">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="0..1" />
+          <End Role="credito" Type="Self.credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="credito">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credito_TipoCuota_TipoCuotaId">
+          <End Role="tipocuota" Type="Self.tipocuota" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="credito" Type="Self.credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipocuota">
+              <PropertyRef Name="TipoCuotaId" />
+            </Principal>
+            <Dependent Role="credito">
+              <PropertyRef Name="TipoCuotaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuota_Credito_CreditoId">
+          <End Role="credito" Type="Self.credito" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="cuota" Type="Self.cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credito">
+              <PropertyRef Name="CreditoId" />
+            </Principal>
+            <Dependent Role="cuota">
+              <PropertyRef Name="CreditoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParamCorreo_Empresa_EmpresaId">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="paramcorreo" Type="Self.paramcorreo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="paramcorreo">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Retiro_ConceptoRetiro_ConceptoRetiroId">
+          <End Role="conceptoretiro" Type="Self.conceptoretiro" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="retiro" Type="Self.retiro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="conceptoretiro">
+              <PropertyRef Name="ConceptoRetiroId" />
+            </Principal>
+            <Dependent Role="retiro">
+              <PropertyRef Name="ConceptoRetiroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Retiro_Socio_SocioId">
+          <End Role="socio" Type="Self.socio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="retiro" Type="Self.retiro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="socio">
+              <PropertyRef Name="SocioId" />
+            </Principal>
+            <Dependent Role="retiro">
+              <PropertyRef Name="SocioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RetiroInteres_Empresa_EmpresaId">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="retirointeres" Type="Self.retirointeres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="retirointeres">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Socio_Empresa_EmpresaId">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="socio" Type="Self.socio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="socio">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="IdentityRole_Users">
+          <End Role="aspnetroles" Type="Self.aspnetroles" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Role="aspnetuserroles" Type="Self.aspnetuserroles" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetroles">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserroles">
+              <PropertyRef Name="RoleId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_empresa">
+          <End Role="empresa" Type="Self.empresa" Multiplicity="1" />
+          <End Role="usuario" Type="Self.usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="icreditModelStoreContainer">
+          <EntitySet Name="__migrationhistory" EntityType="Self.__migrationhistory" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="abono" EntityType="Self.abono" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="abonocapital" EntityType="Self.abonocapital" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="aporte" EntityType="Self.aporte" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="aspnetroles" EntityType="Self.aspnetroles" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="aspnetuserclaims" EntityType="Self.aspnetuserclaims" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="aspnetuserlogins" EntityType="Self.aspnetuserlogins" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="aspnetuserroles" EntityType="Self.aspnetuserroles" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="aspnetusers" EntityType="Self.aspnetusers" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="backup_cuota" EntityType="Self.backup_cuota" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="ciudad" EntityType="Self.ciudad" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="cliente" EntityType="Self.cliente" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="conceptoaporte" EntityType="Self.conceptoaporte" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="conceptoretiro" EntityType="Self.conceptoretiro" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="consecutivo" EntityType="Self.consecutivo" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="contacto" EntityType="Self.contacto" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="credito" EntityType="Self.credito" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="cuota" EntityType="Self.cuota" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="divisioncredito" EntityType="Self.divisioncredito" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="empresa" EntityType="Self.empresa" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="loghome" EntityType="Self.loghome" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="paramcorreo" EntityType="Self.paramcorreo" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="retiro" EntityType="Self.retiro" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="retirointeres" EntityType="Self.retirointeres" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="socio" EntityType="Self.socio" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="tipocuota" EntityType="Self.tipocuota" Schema="icreditdesarrollo" store:Type="Tables" />
+          <EntitySet Name="usuario" EntityType="Self.usuario" Schema="icreditdesarrollo" store:Type="Tables" />
+          <AssociationSet Name="abonoCapital_bakCuota" Association="Self.abonoCapital_bakCuota">
+            <End Role="abonocapital" EntitySet="abonocapital" />
+            <End Role="backup_cuota" EntitySet="backup_cuota" />
+          </AssociationSet>
+          <AssociationSet Name="abonoCapital_Credito" Association="Self.abonoCapital_Credito">
+            <End Role="credito" EntitySet="credito" />
+            <End Role="abonocapital" EntitySet="abonocapital" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Claims" Association="Self.ApplicationUser_Claims">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="Self.ApplicationUser_Logins">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Roles" Association="Self.ApplicationUser_Roles">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+          </AssociationSet>
+          <AssociationSet Name="ciudad_empresa" Association="Self.ciudad_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="cliente_ciudad" Association="Self.cliente_ciudad">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Abono_Cuota_CuotaId" Association="Self.FK_Abono_Cuota_CuotaId">
+            <End Role="cuota" EntitySet="cuota" />
+            <End Role="abono" EntitySet="abono" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aporte_ConceptoAporte_ConceptoAporteId" Association="Self.FK_Aporte_ConceptoAporte_ConceptoAporteId">
+            <End Role="conceptoaporte" EntitySet="conceptoaporte" />
+            <End Role="aporte" EntitySet="aporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aporte_Socio_SocioId" Association="Self.FK_Aporte_Socio_SocioId">
+            <End Role="socio" EntitySet="socio" />
+            <End Role="aporte" EntitySet="aporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Empresa_EmpresaId" Association="Self.FK_Cliente_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConceptoAporte_Empresa_EmpresaId" Association="Self.FK_ConceptoAporte_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="conceptoaporte" EntitySet="conceptoaporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConceptoRetiro_Empresa_EmpresaId" Association="Self.FK_ConceptoRetiro_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="conceptoretiro" EntitySet="conceptoretiro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_consecutivo_empresa" Association="Self.FK_consecutivo_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="consecutivo" EntitySet="consecutivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credito_Cliente_ClienteId" Association="Self.FK_Credito_Cliente_ClienteId">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="credito" EntitySet="credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credito_DivisionCredito_DivisionCreditoId" Association="Self.FK_Credito_DivisionCredito_DivisionCreditoId">
+            <End Role="divisioncredito" EntitySet="divisioncredito" />
+            <End Role="credito" EntitySet="credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_credito_empresa_1" Association="Self.FK_credito_empresa_1">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="credito" EntitySet="credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credito_TipoCuota_TipoCuotaId" Association="Self.FK_Credito_TipoCuota_TipoCuotaId">
+            <End Role="tipocuota" EntitySet="tipocuota" />
+            <End Role="credito" EntitySet="credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuota_Credito_CreditoId" Association="Self.FK_Cuota_Credito_CreditoId">
+            <End Role="credito" EntitySet="credito" />
+            <End Role="cuota" EntitySet="cuota" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParamCorreo_Empresa_EmpresaId" Association="Self.FK_ParamCorreo_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="paramcorreo" EntitySet="paramcorreo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Retiro_ConceptoRetiro_ConceptoRetiroId" Association="Self.FK_Retiro_ConceptoRetiro_ConceptoRetiroId">
+            <End Role="conceptoretiro" EntitySet="conceptoretiro" />
+            <End Role="retiro" EntitySet="retiro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Retiro_Socio_SocioId" Association="Self.FK_Retiro_Socio_SocioId">
+            <End Role="socio" EntitySet="socio" />
+            <End Role="retiro" EntitySet="retiro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetiroInteres_Empresa_EmpresaId" Association="Self.FK_RetiroInteres_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="retirointeres" EntitySet="retirointeres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Socio_Empresa_EmpresaId" Association="Self.FK_Socio_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="socio" EntitySet="socio" />
+          </AssociationSet>
+          <AssociationSet Name="IdentityRole_Users" Association="Self.IdentityRole_Users">
+            <End Role="aspnetroles" EntitySet="aspnetroles" />
+            <End Role="aspnetuserroles" EntitySet="aspnetuserroles" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_empresa" Association="Self.usuario_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="icreditModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityContainer Name="icreditEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="C__migrationhistory" EntityType="icreditModel.C__migrationhistory" />
+          <EntitySet Name="abono" EntityType="icreditModel.abono" />
+          <EntitySet Name="abonocapital" EntityType="icreditModel.abonocapital" />
+          <EntitySet Name="aporte" EntityType="icreditModel.aporte" />
+          <EntitySet Name="aspnetroles" EntityType="icreditModel.aspnetroles" />
+          <EntitySet Name="aspnetuserclaims" EntityType="icreditModel.aspnetuserclaims" />
+          <EntitySet Name="aspnetuserlogins" EntityType="icreditModel.aspnetuserlogins" />
+          <EntitySet Name="aspnetusers" EntityType="icreditModel.aspnetusers" />
+          <EntitySet Name="ciudad" EntityType="icreditModel.ciudad" />
+          <EntitySet Name="cliente" EntityType="icreditModel.cliente" />
+          <EntitySet Name="conceptoaporte" EntityType="icreditModel.conceptoaporte" />
+          <EntitySet Name="conceptoretiro" EntityType="icreditModel.conceptoretiro" />
+          <EntitySet Name="consecutivo" EntityType="icreditModel.consecutivo" />
+          <EntitySet Name="contacto" EntityType="icreditModel.contacto" />
+          <EntitySet Name="cuota" EntityType="icreditModel.cuota" />
+          <EntitySet Name="divisioncredito" EntityType="icreditModel.divisioncredito" />
+          <EntitySet Name="empresa" EntityType="icreditModel.empresa" />
+          <EntitySet Name="loghome" EntityType="icreditModel.loghome" />
+          <EntitySet Name="paramcorreo" EntityType="icreditModel.paramcorreo" />
+          <EntitySet Name="retiro" EntityType="icreditModel.retiro" />
+          <EntitySet Name="retirointeres" EntityType="icreditModel.retirointeres" />
+          <EntitySet Name="socio" EntityType="icreditModel.socio" />
+          <EntitySet Name="tipocuota" EntityType="icreditModel.tipocuota" />
+          <EntitySet Name="usuario" EntityType="icreditModel.usuario" />
+          <AssociationSet Name="FK_Abono_Cuota_CuotaId" Association="icreditModel.FK_Abono_Cuota_CuotaId">
+            <End Role="cuota" EntitySet="cuota" />
+            <End Role="abono" EntitySet="abono" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aporte_ConceptoAporte_ConceptoAporteId" Association="icreditModel.FK_Aporte_ConceptoAporte_ConceptoAporteId">
+            <End Role="conceptoaporte" EntitySet="conceptoaporte" />
+            <End Role="aporte" EntitySet="aporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Aporte_Socio_SocioId" Association="icreditModel.FK_Aporte_Socio_SocioId">
+            <End Role="socio" EntitySet="socio" />
+            <End Role="aporte" EntitySet="aporte" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Claims" Association="icreditModel.ApplicationUser_Claims">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserclaims" EntitySet="aspnetuserclaims" />
+          </AssociationSet>
+          <AssociationSet Name="ApplicationUser_Logins" Association="icreditModel.ApplicationUser_Logins">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetuserlogins" EntitySet="aspnetuserlogins" />
+          </AssociationSet>
+          <AssociationSet Name="ciudad_empresa" Association="icreditModel.ciudad_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="ciudad" EntitySet="ciudad" />
+          </AssociationSet>
+          <AssociationSet Name="cliente_ciudad" Association="icreditModel.cliente_ciudad">
+            <End Role="ciudad" EntitySet="ciudad" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cliente_Empresa_EmpresaId" Association="icreditModel.FK_Cliente_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="cliente" EntitySet="cliente" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConceptoAporte_Empresa_EmpresaId" Association="icreditModel.FK_ConceptoAporte_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="conceptoaporte" EntitySet="conceptoaporte" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ConceptoRetiro_Empresa_EmpresaId" Association="icreditModel.FK_ConceptoRetiro_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="conceptoretiro" EntitySet="conceptoretiro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Retiro_ConceptoRetiro_ConceptoRetiroId" Association="icreditModel.FK_Retiro_ConceptoRetiro_ConceptoRetiroId">
+            <End Role="conceptoretiro" EntitySet="conceptoretiro" />
+            <End Role="retiro" EntitySet="retiro" />
+          </AssociationSet>
+          <AssociationSet Name="FK_consecutivo_empresa" Association="icreditModel.FK_consecutivo_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="consecutivo" EntitySet="consecutivo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_ParamCorreo_Empresa_EmpresaId" Association="icreditModel.FK_ParamCorreo_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="paramcorreo" EntitySet="paramcorreo" />
+          </AssociationSet>
+          <AssociationSet Name="FK_RetiroInteres_Empresa_EmpresaId" Association="icreditModel.FK_RetiroInteres_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="retirointeres" EntitySet="retirointeres" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Socio_Empresa_EmpresaId" Association="icreditModel.FK_Socio_Empresa_EmpresaId">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="socio" EntitySet="socio" />
+          </AssociationSet>
+          <AssociationSet Name="usuario_empresa" Association="icreditModel.usuario_empresa">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="usuario" EntitySet="usuario" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Retiro_Socio_SocioId" Association="icreditModel.FK_Retiro_Socio_SocioId">
+            <End Role="socio" EntitySet="socio" />
+            <End Role="retiro" EntitySet="retiro" />
+          </AssociationSet>
+          <AssociationSet Name="aspnetuserroles" Association="icreditModel.aspnetuserroles">
+            <End Role="aspnetusers" EntitySet="aspnetusers" />
+            <End Role="aspnetroles" EntitySet="aspnetroles" />
+          </AssociationSet>
+          <EntitySet Name="credito" EntityType="icreditModel.credito" />
+          <AssociationSet Name="abonoCapital_Credito" Association="icreditModel.abonoCapital_Credito">
+            <End Role="credito" EntitySet="credito" />
+            <End Role="abonocapital" EntitySet="abonocapital" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credito_Cliente_ClienteId" Association="icreditModel.FK_Credito_Cliente_ClienteId">
+            <End Role="cliente" EntitySet="cliente" />
+            <End Role="credito" EntitySet="credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credito_DivisionCredito_DivisionCreditoId" Association="icreditModel.FK_Credito_DivisionCredito_DivisionCreditoId">
+            <End Role="divisioncredito" EntitySet="divisioncredito" />
+            <End Role="credito" EntitySet="credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_credito_empresa_1" Association="icreditModel.FK_credito_empresa_1">
+            <End Role="empresa" EntitySet="empresa" />
+            <End Role="credito" EntitySet="credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Credito_TipoCuota_TipoCuotaId" Association="icreditModel.FK_Credito_TipoCuota_TipoCuotaId">
+            <End Role="tipocuota" EntitySet="tipocuota" />
+            <End Role="credito" EntitySet="credito" />
+          </AssociationSet>
+          <AssociationSet Name="FK_Cuota_Credito_CreditoId" Association="icreditModel.FK_Cuota_Credito_CreditoId">
+            <End Role="credito" EntitySet="credito" />
+            <End Role="cuota" EntitySet="cuota" />
+          </AssociationSet>
+          <EntitySet Name="backup_cuota" EntityType="icreditModel.backup_cuota" />
+          <AssociationSet Name="abonoCapital_bakCuota" Association="icreditModel.abonoCapital_bakCuota">
+            <End Role="abonocapital" EntitySet="abonocapital" />
+            <End Role="backup_cuota" EntitySet="backup_cuota" />
+          </AssociationSet>
+        </EntityContainer>
+        <EntityType Name="C__migrationhistory">
+          <Key>
+            <PropertyRef Name="MigrationId" />
+          </Key>
+          <Property Name="MigrationId" Type="String" Nullable="false" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="CreatedOn" Type="DateTime" Nullable="false" />
+          <Property Name="Model" Type="Binary" Nullable="false" MaxLength="Max" FixedLength="false" />
+          <Property Name="ProductVersion" Type="String" Nullable="false" MaxLength="32" FixedLength="false" Unicode="false" />
+        </EntityType>
+        <EntityType Name="abono">
+          <Key>
+            <PropertyRef Name="AbonoId" />
+          </Key>
+          <Property Name="AbonoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CuotaId" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" />
+          <Property Name="Paga" Type="Decimal" />
+          <Property Name="Devolucion" Type="Decimal" />
+          <Property Name="Observacion" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <Property Name="AbonoNro" Type="Int32" />
+          <Property Name="FechaEnvio" Type="DateTime" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="cuota" Relationship="icreditModel.FK_Abono_Cuota_CuotaId" FromRole="abono" ToRole="cuota" />
+        </EntityType>
+        <EntityType Name="abonocapital">
+          <Key>
+            <PropertyRef Name="AbonoCapitalId" />
+          </Key>
+          <Property Name="AbonoCapitalId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreditoId" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" />
+          <Property Name="Observacion" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <Property Name="AbonoCapitalNro" Type="Int32" />
+          <Property Name="FechaEnvio" Type="DateTime" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="credito" Relationship="icreditModel.abonoCapital_Credito" FromRole="abonocapital" ToRole="credito" />
+          <NavigationProperty Name="backup_cuota" Relationship="icreditModel.abonoCapital_bakCuota" FromRole="abonocapital" ToRole="backup_cuota" />
+        </EntityType>
+        <EntityType Name="aporte">
+          <Key>
+            <PropertyRef Name="AporteId" />
+          </Key>
+          <Property Name="AporteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor" Type="Decimal" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="SocioId" Type="Int32" Nullable="false" />
+          <Property Name="ConceptoAporteId" Type="Int32" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <NavigationProperty Name="conceptoaporte" Relationship="icreditModel.FK_Aporte_ConceptoAporte_ConceptoAporteId" FromRole="aporte" ToRole="conceptoaporte" />
+          <NavigationProperty Name="socio" Relationship="icreditModel.FK_Aporte_Socio_SocioId" FromRole="aporte" ToRole="socio" />
+        </EntityType>
+        <EntityType Name="aspnetroles">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Name" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetusers" Relationship="icreditModel.aspnetuserroles" FromRole="aspnetroles" ToRole="aspnetusers" />
+        </EntityType>
+        <EntityType Name="aspnetuserclaims">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimType" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="ClaimValue" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetusers" Relationship="icreditModel.ApplicationUser_Claims" FromRole="aspnetuserclaims" ToRole="aspnetusers" />
+        </EntityType>
+        <EntityType Name="aspnetuserlogins">
+          <Key>
+            <PropertyRef Name="LoginProvider" />
+            <PropertyRef Name="ProviderKey" />
+            <PropertyRef Name="UserId" />
+          </Key>
+          <Property Name="LoginProvider" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="ProviderKey" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="UserId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetusers" Relationship="icreditModel.ApplicationUser_Logins" FromRole="aspnetuserlogins" ToRole="aspnetusers" />
+        </EntityType>
+        <EntityType Name="aspnetusers">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="256" FixedLength="false" Unicode="false" />
+          <Property Name="EmailConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="PasswordHash" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="SecurityStamp" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumber" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="PhoneNumberConfirmed" Type="Boolean" Nullable="false" />
+          <Property Name="TwoFactorEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="LockoutEndDateUtc" Type="DateTime" />
+          <Property Name="LockoutEnabled" Type="Boolean" Nullable="false" />
+          <Property Name="AccessFailedCount" Type="Int32" Nullable="false" />
+          <Property Name="UserName" Type="String" Nullable="false" MaxLength="256" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="aspnetuserclaims" Relationship="icreditModel.ApplicationUser_Claims" FromRole="aspnetusers" ToRole="aspnetuserclaims" />
+          <NavigationProperty Name="aspnetuserlogins" Relationship="icreditModel.ApplicationUser_Logins" FromRole="aspnetusers" ToRole="aspnetuserlogins" />
+          <NavigationProperty Name="aspnetroles" Relationship="icreditModel.aspnetuserroles" FromRole="aspnetusers" ToRole="aspnetroles" />
+        </EntityType>
+        <EntityType Name="ciudad">
+          <Key>
+            <PropertyRef Name="CiudadId" />
+          </Key>
+          <Property Name="CiudadId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.ciudad_empresa" FromRole="ciudad" ToRole="empresa" />
+          <NavigationProperty Name="cliente" Relationship="icreditModel.cliente_ciudad" FromRole="ciudad" ToRole="cliente" />
+        </EntityType>
+        <EntityType Name="cliente">
+          <Key>
+            <PropertyRef Name="ClienteId" />
+          </Key>
+          <Property Name="ClienteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nit" Type="String" Nullable="false" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Email" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <Property Name="CiudadId" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <NavigationProperty Name="ciudad" Relationship="icreditModel.cliente_ciudad" FromRole="cliente" ToRole="ciudad" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.FK_Cliente_Empresa_EmpresaId" FromRole="cliente" ToRole="empresa" />
+          <NavigationProperty Name="credito" Relationship="icreditModel.FK_Credito_Cliente_ClienteId" FromRole="cliente" ToRole="credito" />
+        </EntityType>
+        <EntityType Name="conceptoaporte">
+          <Key>
+            <PropertyRef Name="ConceptoAporteId" />
+          </Key>
+          <Property Name="ConceptoAporteId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <NavigationProperty Name="aporte" Relationship="icreditModel.FK_Aporte_ConceptoAporte_ConceptoAporteId" FromRole="conceptoaporte" ToRole="aporte" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.FK_ConceptoAporte_Empresa_EmpresaId" FromRole="conceptoaporte" ToRole="empresa" />
+        </EntityType>
+        <EntityType Name="conceptoretiro">
+          <Key>
+            <PropertyRef Name="ConceptoRetiroId" />
+          </Key>
+          <Property Name="ConceptoRetiroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="254" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.FK_ConceptoRetiro_Empresa_EmpresaId" FromRole="conceptoretiro" ToRole="empresa" />
+          <NavigationProperty Name="retiro" Relationship="icreditModel.FK_Retiro_ConceptoRetiro_ConceptoRetiroId" FromRole="conceptoretiro" ToRole="retiro" />
+        </EntityType>
+        <EntityType Name="consecutivo">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="CreditoNro" Type="Int32" />
+          <Property Name="RetiroInteresNro" Type="Int32" />
+          <Property Name="AbonoNro" Type="Int32" />
+          <Property Name="AbonoCapitalNro" Type="Int32" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.FK_consecutivo_empresa" FromRole="consecutivo" ToRole="empresa" />
+        </EntityType>
+        <EntityType Name="contacto">
+          <Key>
+            <PropertyRef Name="ContactoId" />
+          </Key>
+          <Property Name="ContactoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="ConNombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConTelefono" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="ConObserva" Type="String" MaxLength="1000" FixedLength="false" Unicode="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+        </EntityType>
+        <EntityType Name="cuota">
+          <Key>
+            <PropertyRef Name="CuotaId" />
+          </Key>
+          <Property Name="CuotaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="CreditoId" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="AbonoCapital" Type="Decimal" />
+          <Property Name="AbonoInteres" Type="Decimal" />
+          <Property Name="AjusteAbonoCapital" Type="Decimal" />
+          <Property Name="AjusteAbonoInteres" Type="Decimal" />
+          <Property Name="SaldoCapital" Type="Decimal" />
+          <Property Name="SaldoInteres" Type="Decimal" />
+          <NavigationProperty Name="abono" Relationship="icreditModel.FK_Abono_Cuota_CuotaId" FromRole="cuota" ToRole="abono" />
+          <NavigationProperty Name="credito" Relationship="icreditModel.FK_Cuota_Credito_CreditoId" FromRole="cuota" ToRole="credito" />
+        </EntityType>
+        <EntityType Name="divisioncredito">
+          <Key>
+            <PropertyRef Name="DivisionCreditoId" />
+          </Key>
+          <Property Name="DivisionCreditoId" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="credito" Relationship="icreditModel.FK_Credito_DivisionCredito_DivisionCreditoId" FromRole="divisioncredito" ToRole="credito" />
+        </EntityType>
+        <EntityType Name="empresa">
+          <Key>
+            <PropertyRef Name="EmpresaId" />
+          </Key>
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nit" Type="String" MaxLength="30" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="Direccion" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <Property Name="LogoUrl" Type="String" MaxLength="500" FixedLength="false" Unicode="false" />
+          <Property Name="EmpEmail" Type="String" Nullable="false" MaxLength="200" FixedLength="false" Unicode="false" />
+          <Property Name="EmpAnioActual" Type="Int32" />
+          <Property Name="EmpMesActual" Type="Int32" />
+          <NavigationProperty Name="ciudad" Relationship="icreditModel.ciudad_empresa" FromRole="empresa" ToRole="ciudad" />
+          <NavigationProperty Name="cliente" Relationship="icreditModel.FK_Cliente_Empresa_EmpresaId" FromRole="empresa" ToRole="cliente" />
+          <NavigationProperty Name="conceptoaporte" Relationship="icreditModel.FK_ConceptoAporte_Empresa_EmpresaId" FromRole="empresa" ToRole="conceptoaporte" />
+          <NavigationProperty Name="conceptoretiro" Relationship="icreditModel.FK_ConceptoRetiro_Empresa_EmpresaId" FromRole="empresa" ToRole="conceptoretiro" />
+          <NavigationProperty Name="consecutivo" Relationship="icreditModel.FK_consecutivo_empresa" FromRole="empresa" ToRole="consecutivo" />
+          <NavigationProperty Name="paramcorreo" Relationship="icreditModel.FK_ParamCorreo_Empresa_EmpresaId" FromRole="empresa" ToRole="paramcorreo" />
+          <NavigationProperty Name="retirointeres" Relationship="icreditModel.FK_RetiroInteres_Empresa_EmpresaId" FromRole="empresa" ToRole="retirointeres" />
+          <NavigationProperty Name="socio" Relationship="icreditModel.FK_Socio_Empresa_EmpresaId" FromRole="empresa" ToRole="socio" />
+          <NavigationProperty Name="usuario" Relationship="icreditModel.usuario_empresa" FromRole="empresa" ToRole="usuario" />
+          <NavigationProperty Name="credito" Relationship="icreditModel.FK_credito_empresa_1" FromRole="empresa" ToRole="credito" />
+        </EntityType>
+        <EntityType Name="loghome">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int64" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Visitantes" Type="Int64" />
+        </EntityType>
+        <EntityType Name="paramcorreo">
+          <Key>
+            <PropertyRef Name="ParamCorreoId" />
+          </Key>
+          <Property Name="ParamCorreoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Servidor" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Puerto" Type="Int32" Nullable="false" />
+          <Property Name="Usuario" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Password" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="1073741823" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.FK_ParamCorreo_Empresa_EmpresaId" FromRole="paramcorreo" ToRole="empresa" />
+        </EntityType>
+        <EntityType Name="retiro">
+          <Key>
+            <PropertyRef Name="RetiroId" />
+          </Key>
+          <Property Name="RetiroId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor" Type="Decimal" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="SocioId" Type="Int32" Nullable="false" />
+          <Property Name="ConceptoRetiroId" Type="Int32" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <NavigationProperty Name="conceptoretiro" Relationship="icreditModel.FK_Retiro_ConceptoRetiro_ConceptoRetiroId" FromRole="retiro" ToRole="conceptoretiro" />
+          <NavigationProperty Name="socio" Relationship="icreditModel.FK_Retiro_Socio_SocioId" FromRole="retiro" ToRole="socio" />
+        </EntityType>
+        <EntityType Name="retirointeres">
+          <Key>
+            <PropertyRef Name="RetiroInteresId" />
+          </Key>
+          <Property Name="RetiroInteresId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Valor" Type="Decimal" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="RetiroInteresNro" Type="Int32" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.FK_RetiroInteres_Empresa_EmpresaId" FromRole="retirointeres" ToRole="empresa" />
+        </EntityType>
+        <EntityType Name="socio">
+          <Key>
+            <PropertyRef Name="SocioId" />
+          </Key>
+          <Property Name="SocioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nit" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" Nullable="false" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <NavigationProperty Name="aporte" Relationship="icreditModel.FK_Aporte_Socio_SocioId" FromRole="socio" ToRole="aporte" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.FK_Socio_Empresa_EmpresaId" FromRole="socio" ToRole="empresa" />
+          <NavigationProperty Name="retiro" Relationship="icreditModel.FK_Retiro_Socio_SocioId" FromRole="socio" ToRole="retiro" />
+        </EntityType>
+        <EntityType Name="tipocuota">
+          <Key>
+            <PropertyRef Name="TipoCuotaId" />
+          </Key>
+          <Property Name="TipoCuotaId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="Nombre" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="Estado" Type="Boolean" />
+          <NavigationProperty Name="credito" Relationship="icreditModel.FK_Credito_TipoCuota_TipoCuotaId" FromRole="tipocuota" ToRole="credito" />
+        </EntityType>
+        <EntityType Name="usuario">
+          <Key>
+            <PropertyRef Name="UsuarioId" />
+          </Key>
+          <Property Name="UsuarioId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="UsuDocumento" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="UsuNombre" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="UsuTelefono" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="aspnetusersId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="EmpresaId" Type="Int32" Nullable="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="UsuEmail" Type="String" MaxLength="200" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.usuario_empresa" FromRole="usuario" ToRole="empresa" />
+        </EntityType>
+        <Association Name="FK_Abono_Cuota_CuotaId">
+          <End Type="icreditModel.cuota" Role="cuota" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.abono" Role="abono" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cuota">
+              <PropertyRef Name="CuotaId" />
+            </Principal>
+            <Dependent Role="abono">
+              <PropertyRef Name="CuotaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aporte_ConceptoAporte_ConceptoAporteId">
+          <End Type="icreditModel.conceptoaporte" Role="conceptoaporte" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.aporte" Role="aporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="conceptoaporte">
+              <PropertyRef Name="ConceptoAporteId" />
+            </Principal>
+            <Dependent Role="aporte">
+              <PropertyRef Name="ConceptoAporteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Aporte_Socio_SocioId">
+          <End Type="icreditModel.socio" Role="socio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.aporte" Role="aporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="socio">
+              <PropertyRef Name="SocioId" />
+            </Principal>
+            <Dependent Role="aporte">
+              <PropertyRef Name="SocioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Claims">
+          <End Type="icreditModel.aspnetusers" Role="aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.aspnetuserclaims" Role="aspnetuserclaims" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserclaims">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ApplicationUser_Logins">
+          <End Type="icreditModel.aspnetusers" Role="aspnetusers" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.aspnetuserlogins" Role="aspnetuserlogins" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="aspnetusers">
+              <PropertyRef Name="Id" />
+            </Principal>
+            <Dependent Role="aspnetuserlogins">
+              <PropertyRef Name="UserId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="ciudad_empresa">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1" />
+          <End Type="icreditModel.ciudad" Role="ciudad" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="ciudad">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="cliente_ciudad">
+          <End Type="icreditModel.ciudad" Role="ciudad" Multiplicity="0..1" />
+          <End Type="icreditModel.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="ciudad">
+              <PropertyRef Name="CiudadId" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="CiudadId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cliente_Empresa_EmpresaId">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.cliente" Role="cliente" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="cliente">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConceptoAporte_Empresa_EmpresaId">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1" />
+          <End Type="icreditModel.conceptoaporte" Role="conceptoaporte" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="conceptoaporte">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ConceptoRetiro_Empresa_EmpresaId">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1" />
+          <End Type="icreditModel.conceptoretiro" Role="conceptoretiro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="conceptoretiro">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Retiro_ConceptoRetiro_ConceptoRetiroId">
+          <End Type="icreditModel.conceptoretiro" Role="conceptoretiro" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.retiro" Role="retiro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="conceptoretiro">
+              <PropertyRef Name="ConceptoRetiroId" />
+            </Principal>
+            <Dependent Role="retiro">
+              <PropertyRef Name="ConceptoRetiroId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_consecutivo_empresa">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1" />
+          <End Type="icreditModel.consecutivo" Role="consecutivo" Multiplicity="0..1" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="consecutivo">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_ParamCorreo_Empresa_EmpresaId">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.paramcorreo" Role="paramcorreo" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="paramcorreo">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_RetiroInteres_Empresa_EmpresaId">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.retirointeres" Role="retirointeres" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="retirointeres">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Socio_Empresa_EmpresaId">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.socio" Role="socio" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="socio">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="usuario_empresa">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="1" />
+          <End Type="icreditModel.usuario" Role="usuario" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="usuario">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Retiro_Socio_SocioId">
+          <End Type="icreditModel.socio" Role="socio" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.retiro" Role="retiro" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="socio">
+              <PropertyRef Name="SocioId" />
+            </Principal>
+            <Dependent Role="retiro">
+              <PropertyRef Name="SocioId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="aspnetuserroles">
+          <End Type="icreditModel.aspnetusers" Role="aspnetusers" Multiplicity="*" />
+          <End Type="icreditModel.aspnetroles" Role="aspnetroles" Multiplicity="*" />
+        </Association>
+        <EntityType Name="credito">
+          <Key>
+            <PropertyRef Name="CreditoId" />
+          </Key>
+          <Property Name="CreditoId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="ClienteId" Type="Int32" Nullable="false" />
+          <Property Name="Valor" Type="Decimal" />
+          <Property Name="Interes" Type="Decimal" />
+          <Property Name="Meses" Type="Int32" Nullable="false" />
+          <Property Name="TipoCuotaId" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="PrimCuota" Type="Boolean" Nullable="false" />
+          <Property Name="DivisionCreditoId" Type="Int32" Nullable="false" />
+          <Property Name="InteresPrimCuota" Type="Boolean" Nullable="false" />
+          <Property Name="CapitalFinalCredito" Type="Boolean" Nullable="false" />
+          <Property Name="Observacion" Type="String" MaxLength="65535" FixedLength="false" Unicode="false" />
+          <Property Name="CreadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaCreacion" Type="DateTime" />
+          <Property Name="ModificadoPor" Type="String" MaxLength="128" FixedLength="false" Unicode="false" />
+          <Property Name="FechaModificacion" Type="DateTime" />
+          <Property Name="CreditoNro" Type="Int32" />
+          <Property Name="EmpresaId" Type="Int32" />
+          <Property Name="UsuarioId" Type="Int32" />
+          <Property Name="Estado" Type="Boolean" Nullable="false" />
+          <Property Name="SaldoCapital" Type="Decimal" />
+          <Property Name="SaldoInteres" Type="Decimal" />
+          <NavigationProperty Name="abonocapital" Relationship="icreditModel.abonoCapital_Credito" FromRole="credito" ToRole="abonocapital" />
+          <NavigationProperty Name="cliente" Relationship="icreditModel.FK_Credito_Cliente_ClienteId" FromRole="credito" ToRole="cliente" />
+          <NavigationProperty Name="divisioncredito" Relationship="icreditModel.FK_Credito_DivisionCredito_DivisionCreditoId" FromRole="credito" ToRole="divisioncredito" />
+          <NavigationProperty Name="empresa" Relationship="icreditModel.FK_credito_empresa_1" FromRole="credito" ToRole="empresa" />
+          <NavigationProperty Name="tipocuota" Relationship="icreditModel.FK_Credito_TipoCuota_TipoCuotaId" FromRole="credito" ToRole="tipocuota" />
+          <NavigationProperty Name="cuota" Relationship="icreditModel.FK_Cuota_Credito_CreditoId" FromRole="credito" ToRole="cuota" />
+        </EntityType>
+        <Association Name="abonoCapital_Credito">
+          <End Type="icreditModel.credito" Role="credito" Multiplicity="1" />
+          <End Type="icreditModel.abonocapital" Role="abonocapital" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credito">
+              <PropertyRef Name="CreditoId" />
+            </Principal>
+            <Dependent Role="abonocapital">
+              <PropertyRef Name="CreditoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credito_Cliente_ClienteId">
+          <End Type="icreditModel.cliente" Role="cliente" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.credito" Role="credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="cliente">
+              <PropertyRef Name="ClienteId" />
+            </Principal>
+            <Dependent Role="credito">
+              <PropertyRef Name="ClienteId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credito_DivisionCredito_DivisionCreditoId">
+          <End Type="icreditModel.divisioncredito" Role="divisioncredito" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.credito" Role="credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="divisioncredito">
+              <PropertyRef Name="DivisionCreditoId" />
+            </Principal>
+            <Dependent Role="credito">
+              <PropertyRef Name="DivisionCreditoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_credito_empresa_1">
+          <End Type="icreditModel.empresa" Role="empresa" Multiplicity="0..1" />
+          <End Type="icreditModel.credito" Role="credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="empresa">
+              <PropertyRef Name="EmpresaId" />
+            </Principal>
+            <Dependent Role="credito">
+              <PropertyRef Name="EmpresaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Credito_TipoCuota_TipoCuotaId">
+          <End Type="icreditModel.tipocuota" Role="tipocuota" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.credito" Role="credito" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="tipocuota">
+              <PropertyRef Name="TipoCuotaId" />
+            </Principal>
+            <Dependent Role="credito">
+              <PropertyRef Name="TipoCuotaId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK_Cuota_Credito_CreditoId">
+          <End Type="icreditModel.credito" Role="credito" Multiplicity="1">
+            <OnDelete Action="Cascade" />
+          </End>
+          <End Type="icreditModel.cuota" Role="cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="credito">
+              <PropertyRef Name="CreditoId" />
+            </Principal>
+            <Dependent Role="cuota">
+              <PropertyRef Name="CreditoId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityType Name="backup_cuota">
+          <Key>
+            <PropertyRef Name="BackupCuotaId" />
+          </Key>
+          <Property Name="BackupCuotaId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="AbonoCapitalId" Type="Int32" Nullable="false" />
+          <Property Name="CuotaId" Type="Int32" Nullable="false" />
+          <Property Name="CreditoId" Type="Int32" Nullable="false" />
+          <Property Name="Numero" Type="Int32" Nullable="false" />
+          <Property Name="Fecha" Type="DateTime" Nullable="false" />
+          <Property Name="AbonoCapital" Type="Decimal" />
+          <Property Name="AbonoInteres" Type="Decimal" />
+          <Property Name="AjusteAbonoCapital" Type="Decimal" />
+          <Property Name="AjusteAbonoInteres" Type="Decimal" />
+          <Property Name="SaldoCapital" Type="Decimal" />
+          <Property Name="SaldoInteres" Type="Decimal" />
+          <NavigationProperty Name="abonocapital1" Relationship="icreditModel.abonoCapital_bakCuota" FromRole="backup_cuota" ToRole="abonocapital" />
+        </EntityType>
+        <Association Name="abonoCapital_bakCuota">
+          <End Type="icreditModel.abonocapital" Role="abonocapital" Multiplicity="1" />
+          <End Type="icreditModel.backup_cuota" Role="backup_cuota" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="abonocapital">
+              <PropertyRef Name="AbonoCapitalId" />
+            </Principal>
+            <Dependent Role="backup_cuota">
+              <PropertyRef Name="AbonoCapitalId" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="icreditModelStoreContainer" CdmEntityContainer="icreditEntities">
+          <EntitySetMapping Name="C__migrationhistory">
+            <EntityTypeMapping TypeName="icreditModel.C__migrationhistory">
+              <MappingFragment StoreEntitySet="__migrationhistory">
+                <ScalarProperty Name="ProductVersion" ColumnName="ProductVersion" />
+                <ScalarProperty Name="Model" ColumnName="Model" />
+                <ScalarProperty Name="CreatedOn" ColumnName="CreatedOn" />
+                <ScalarProperty Name="MigrationId" ColumnName="MigrationId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="abono">
+            <EntityTypeMapping TypeName="icreditModel.abono">
+              <MappingFragment StoreEntitySet="abono">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="AbonoNro" ColumnName="AbonoNro" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Devolucion" ColumnName="Devolucion" />
+                <ScalarProperty Name="Paga" ColumnName="Paga" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CuotaId" ColumnName="CuotaId" />
+                <ScalarProperty Name="AbonoId" ColumnName="AbonoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="abonocapital">
+            <EntityTypeMapping TypeName="icreditModel.abonocapital">
+              <MappingFragment StoreEntitySet="abonocapital">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaEnvio" ColumnName="FechaEnvio" />
+                <ScalarProperty Name="AbonoCapitalNro" ColumnName="AbonoCapitalNro" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CreditoId" ColumnName="CreditoId" />
+                <ScalarProperty Name="AbonoCapitalId" ColumnName="AbonoCapitalId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aporte">
+            <EntityTypeMapping TypeName="icreditModel.aporte">
+              <MappingFragment StoreEntitySet="aporte">
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="ConceptoAporteId" ColumnName="ConceptoAporteId" />
+                <ScalarProperty Name="SocioId" ColumnName="SocioId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="AporteId" ColumnName="AporteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetroles">
+            <EntityTypeMapping TypeName="icreditModel.aspnetroles">
+              <MappingFragment StoreEntitySet="aspnetroles">
+                <ScalarProperty Name="Name" ColumnName="Name" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetuserclaims">
+            <EntityTypeMapping TypeName="icreditModel.aspnetuserclaims">
+              <MappingFragment StoreEntitySet="aspnetuserclaims">
+                <ScalarProperty Name="ClaimValue" ColumnName="ClaimValue" />
+                <ScalarProperty Name="ClaimType" ColumnName="ClaimType" />
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetuserlogins">
+            <EntityTypeMapping TypeName="icreditModel.aspnetuserlogins">
+              <MappingFragment StoreEntitySet="aspnetuserlogins">
+                <ScalarProperty Name="UserId" ColumnName="UserId" />
+                <ScalarProperty Name="ProviderKey" ColumnName="ProviderKey" />
+                <ScalarProperty Name="LoginProvider" ColumnName="LoginProvider" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="aspnetusers">
+            <EntityTypeMapping TypeName="icreditModel.aspnetusers">
+              <MappingFragment StoreEntitySet="aspnetusers">
+                <ScalarProperty Name="UserName" ColumnName="UserName" />
+                <ScalarProperty Name="AccessFailedCount" ColumnName="AccessFailedCount" />
+                <ScalarProperty Name="LockoutEnabled" ColumnName="LockoutEnabled" />
+                <ScalarProperty Name="LockoutEndDateUtc" ColumnName="LockoutEndDateUtc" />
+                <ScalarProperty Name="TwoFactorEnabled" ColumnName="TwoFactorEnabled" />
+                <ScalarProperty Name="PhoneNumberConfirmed" ColumnName="PhoneNumberConfirmed" />
+                <ScalarProperty Name="PhoneNumber" ColumnName="PhoneNumber" />
+                <ScalarProperty Name="SecurityStamp" ColumnName="SecurityStamp" />
+                <ScalarProperty Name="PasswordHash" ColumnName="PasswordHash" />
+                <ScalarProperty Name="EmailConfirmed" ColumnName="EmailConfirmed" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="ciudad">
+            <EntityTypeMapping TypeName="icreditModel.ciudad">
+              <MappingFragment StoreEntitySet="ciudad">
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="CiudadId" ColumnName="CiudadId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cliente">
+            <EntityTypeMapping TypeName="icreditModel.cliente">
+              <MappingFragment StoreEntitySet="cliente">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="CiudadId" ColumnName="CiudadId" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="conceptoaporte">
+            <EntityTypeMapping TypeName="icreditModel.conceptoaporte">
+              <MappingFragment StoreEntitySet="conceptoaporte">
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ConceptoAporteId" ColumnName="ConceptoAporteId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="conceptoretiro">
+            <EntityTypeMapping TypeName="icreditModel.conceptoretiro">
+              <MappingFragment StoreEntitySet="conceptoretiro">
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="ConceptoRetiroId" ColumnName="ConceptoRetiroId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="consecutivo">
+            <EntityTypeMapping TypeName="icreditModel.consecutivo">
+              <MappingFragment StoreEntitySet="consecutivo">
+                <ScalarProperty Name="AbonoCapitalNro" ColumnName="AbonoCapitalNro" />
+                <ScalarProperty Name="AbonoNro" ColumnName="AbonoNro" />
+                <ScalarProperty Name="RetiroInteresNro" ColumnName="RetiroInteresNro" />
+                <ScalarProperty Name="CreditoNro" ColumnName="CreditoNro" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="contacto">
+            <EntityTypeMapping TypeName="icreditModel.contacto">
+              <MappingFragment StoreEntitySet="contacto">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="ConObserva" ColumnName="ConObserva" />
+                <ScalarProperty Name="ConEmail" ColumnName="ConEmail" />
+                <ScalarProperty Name="ConTelefono" ColumnName="ConTelefono" />
+                <ScalarProperty Name="ConNombre" ColumnName="ConNombre" />
+                <ScalarProperty Name="ContactoId" ColumnName="ContactoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="cuota">
+            <EntityTypeMapping TypeName="icreditModel.cuota">
+              <MappingFragment StoreEntitySet="cuota">
+                <ScalarProperty Name="SaldoInteres" ColumnName="SaldoInteres" />
+                <ScalarProperty Name="SaldoCapital" ColumnName="SaldoCapital" />
+                <ScalarProperty Name="AjusteAbonoInteres" ColumnName="AjusteAbonoInteres" />
+                <ScalarProperty Name="AjusteAbonoCapital" ColumnName="AjusteAbonoCapital" />
+                <ScalarProperty Name="AbonoInteres" ColumnName="AbonoInteres" />
+                <ScalarProperty Name="AbonoCapital" ColumnName="AbonoCapital" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="CreditoId" ColumnName="CreditoId" />
+                <ScalarProperty Name="CuotaId" ColumnName="CuotaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="divisioncredito">
+            <EntityTypeMapping TypeName="icreditModel.divisioncredito">
+              <MappingFragment StoreEntitySet="divisioncredito">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="DivisionCreditoId" ColumnName="DivisionCreditoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="empresa">
+            <EntityTypeMapping TypeName="icreditModel.empresa">
+              <MappingFragment StoreEntitySet="empresa">
+                <ScalarProperty Name="EmpMesActual" ColumnName="EmpMesActual" />
+                <ScalarProperty Name="EmpAnioActual" ColumnName="EmpAnioActual" />
+                <ScalarProperty Name="EmpEmail" ColumnName="EmpEmail" />
+                <ScalarProperty Name="LogoUrl" ColumnName="LogoUrl" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="loghome">
+            <EntityTypeMapping TypeName="icreditModel.loghome">
+              <MappingFragment StoreEntitySet="loghome">
+                <ScalarProperty Name="Visitantes" ColumnName="Visitantes" />
+                <ScalarProperty Name="Id" ColumnName="Id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="paramcorreo">
+            <EntityTypeMapping TypeName="icreditModel.paramcorreo">
+              <MappingFragment StoreEntitySet="paramcorreo">
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Password" ColumnName="Password" />
+                <ScalarProperty Name="Usuario" ColumnName="Usuario" />
+                <ScalarProperty Name="Puerto" ColumnName="Puerto" />
+                <ScalarProperty Name="Servidor" ColumnName="Servidor" />
+                <ScalarProperty Name="ParamCorreoId" ColumnName="ParamCorreoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="retiro">
+            <EntityTypeMapping TypeName="icreditModel.retiro">
+              <MappingFragment StoreEntitySet="retiro">
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="ConceptoRetiroId" ColumnName="ConceptoRetiroId" />
+                <ScalarProperty Name="SocioId" ColumnName="SocioId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="RetiroId" ColumnName="RetiroId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="retirointeres">
+            <EntityTypeMapping TypeName="icreditModel.retirointeres">
+              <MappingFragment StoreEntitySet="retirointeres">
+                <ScalarProperty Name="RetiroInteresNro" ColumnName="RetiroInteresNro" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="RetiroInteresId" ColumnName="RetiroInteresId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="socio">
+            <EntityTypeMapping TypeName="icreditModel.socio">
+              <MappingFragment StoreEntitySet="socio">
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="Nit" ColumnName="Nit" />
+                <ScalarProperty Name="SocioId" ColumnName="SocioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="tipocuota">
+            <EntityTypeMapping TypeName="icreditModel.tipocuota">
+              <MappingFragment StoreEntitySet="tipocuota">
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="TipoCuotaId" ColumnName="TipoCuotaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="usuario">
+            <EntityTypeMapping TypeName="icreditModel.usuario">
+              <MappingFragment StoreEntitySet="usuario">
+                <ScalarProperty Name="UsuEmail" ColumnName="UsuEmail" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="aspnetusersId" ColumnName="aspnetusersId" />
+                <ScalarProperty Name="UsuTelefono" ColumnName="UsuTelefono" />
+                <ScalarProperty Name="UsuNombre" ColumnName="UsuNombre" />
+                <ScalarProperty Name="UsuDocumento" ColumnName="UsuDocumento" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <AssociationSetMapping Name="aspnetuserroles" TypeName="icreditModel.aspnetuserroles" StoreEntitySet="aspnetuserroles">
+            <EndProperty Name="aspnetroles">
+              <ScalarProperty Name="Id" ColumnName="RoleId" />
+            </EndProperty>
+            <EndProperty Name="aspnetusers">
+              <ScalarProperty Name="Id" ColumnName="UserId" />
+            </EndProperty>
+          </AssociationSetMapping>
+          <EntitySetMapping Name="credito">
+            <EntityTypeMapping TypeName="icreditModel.credito">
+              <MappingFragment StoreEntitySet="credito">
+                <ScalarProperty Name="SaldoInteres" ColumnName="SaldoInteres" />
+                <ScalarProperty Name="SaldoCapital" ColumnName="SaldoCapital" />
+                <ScalarProperty Name="Estado" ColumnName="Estado" />
+                <ScalarProperty Name="UsuarioId" ColumnName="UsuarioId" />
+                <ScalarProperty Name="EmpresaId" ColumnName="EmpresaId" />
+                <ScalarProperty Name="CreditoNro" ColumnName="CreditoNro" />
+                <ScalarProperty Name="FechaModificacion" ColumnName="FechaModificacion" />
+                <ScalarProperty Name="ModificadoPor" ColumnName="ModificadoPor" />
+                <ScalarProperty Name="FechaCreacion" ColumnName="FechaCreacion" />
+                <ScalarProperty Name="CreadoPor" ColumnName="CreadoPor" />
+                <ScalarProperty Name="Observacion" ColumnName="Observacion" />
+                <ScalarProperty Name="CapitalFinalCredito" ColumnName="CapitalFinalCredito" />
+                <ScalarProperty Name="InteresPrimCuota" ColumnName="InteresPrimCuota" />
+                <ScalarProperty Name="DivisionCreditoId" ColumnName="DivisionCreditoId" />
+                <ScalarProperty Name="PrimCuota" ColumnName="PrimCuota" />
+                <ScalarProperty Name="TipoCuotaId" ColumnName="TipoCuotaId" />
+                <ScalarProperty Name="Meses" ColumnName="Meses" />
+                <ScalarProperty Name="Interes" ColumnName="Interes" />
+                <ScalarProperty Name="Valor" ColumnName="Valor" />
+                <ScalarProperty Name="ClienteId" ColumnName="ClienteId" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="CreditoId" ColumnName="CreditoId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="backup_cuota">
+            <EntityTypeMapping TypeName="icreditModel.backup_cuota">
+              <MappingFragment StoreEntitySet="backup_cuota">
+                <ScalarProperty Name="SaldoInteres" ColumnName="SaldoInteres" />
+                <ScalarProperty Name="SaldoCapital" ColumnName="SaldoCapital" />
+                <ScalarProperty Name="AjusteAbonoInteres" ColumnName="AjusteAbonoInteres" />
+                <ScalarProperty Name="AjusteAbonoCapital" ColumnName="AjusteAbonoCapital" />
+                <ScalarProperty Name="AbonoInteres" ColumnName="AbonoInteres" />
+                <ScalarProperty Name="AbonoCapital" ColumnName="AbonoCapital" />
+                <ScalarProperty Name="Fecha" ColumnName="Fecha" />
+                <ScalarProperty Name="Numero" ColumnName="Numero" />
+                <ScalarProperty Name="CreditoId" ColumnName="CreditoId" />
+                <ScalarProperty Name="CuotaId" ColumnName="CuotaId" />
+                <ScalarProperty Name="AbonoCapitalId" ColumnName="AbonoCapitalId" />
+                <ScalarProperty Name="BackupCuotaId" ColumnName="BackupCuotaId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Ninguno" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

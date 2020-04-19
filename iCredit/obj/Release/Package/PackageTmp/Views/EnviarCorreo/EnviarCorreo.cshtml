@@ -1,0 +1,191 @@
+﻿@model CrediAdmin.Models.EnviarCorreo
+
+@{
+    Layout = null;
+    // HtmlHelper.ClientValidationEnabled = true;
+}
+<script type="text/javascript">
+
+    $(document).ready(function () {
+
+        var Path = location.host;
+        var VirtualDirectory;
+        if (Path.indexOf("localhost") >= 0 && Path.indexOf(":") >= 0) { VirtualDirectory = ""; }
+        else {
+            var pathname = window.location.pathname; var VirtualDir = pathname.split('/');
+            VirtualDirectory = VirtualDir[1]; VirtualDirectory = '/' + VirtualDirectory;
+        }
+
+        validar = function () {
+            for (var i = 0; i < arguments.length; i++) {
+                if (arguments[i].val() == "" || arguments[i].val() == null) {
+                    arguments[i].css("border", "1px solid red");
+                    arguments[i].focus();
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        $('#btnEnviar').click(function (event) {
+            // $("#createUnoForm").submit(function (event) {
+            /* when the submit button in the modal is clicked, submit the form */
+            
+            //  event.preventDefault();
+            if (validar($("#Destinatario"), $('#Asunto'), $('#Mensaje'))) {
+              //  alert('datos validos');
+
+                $.ajax({
+                    //para validar que la fecha que esta ingesando los asistente sea mayor a la fecha actual de nomina
+                    url: VirtualDirectory + "/EnviarCorreo/EnviarAbono/",
+                    type: "POST",
+                    // data: JSON.stringify({ cliNit: $('#Cliente_Cli_Nit').val(), Cli_Nombre: $('#Cli_Nombre').val(), Cli_Apellido: $('#Cli_Apellido').val() }),
+                    data: JSON.stringify({
+                        Servidor: $("#Servidor").val(), Puerto: $('#Puerto').val(),
+                        Usuario: $('#Usuario').val(),
+                        Empresa: $('#Empresa').val(),
+                        Destinatario: $('#Destinatario').val(),
+                        Password: $('#Password').val(),
+                        Asunto: $('#Asunto').val(),
+                        Mensaje: $('#Mensaje').val(),
+                        Adjunto: $('#Adjunto').val()
+                    }),
+                    dataType: "json",
+                    contentType: "application/json; charset=utf-8",
+                    beforeSend: function () {
+                        $('#messageOk').html("Enviando correo... (Espere por favor)").fadeIn();
+                    },
+                    success: function (data) {
+                        if (data.success) {
+                            $('#tallModal').modal('hide');
+                            $('#message').html(data.FechaEnvio).fadeIn();
+                            
+                        }else
+                        {
+                            //alert('error');
+                            $('#message').html(data.Error).fadeIn();
+                           // $(".ui-dialog-buttonpane button:contains('Ok')").button("enable");
+                        }
+                    },
+
+                    error: function () {
+                        alert('error');
+                        $('#message').html('Error Occurred').fadeIn();
+                        //$(".ui-dialog-buttonpane button:contains('Ok')").button("enable");
+                    }
+                });
+            } else {
+
+            }
+            //alert('submitting');
+            //$('#createUnoForm').submit();
+            event.preventDefault();
+
+        });
+
+
+
+
+    });
+   </script>
+@*<div id="loading" title="Enviando Correo...">
+        <p>Please wait ...</p>
+    </div>*@
+
+    @*@using (Html.BeginForm("EnviarCorreo", "EnviarCorreo", FormMethod.Post))
+{*@
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+       
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div id="message" class="text-danger"></div>
+        
+        @Html.Hidden("urlPapa",(string)ViewBag.controlador)
+        @Html.Hidden("abonoId", (string)ViewBag.abonoId)
+        @Html.HiddenFor(model => model.Servidor)
+        @Html.HiddenFor(model => model.Puerto)
+        @Html.HiddenFor(model => model.Usuario)
+        @Html.HiddenFor(model => model.Password)
+        @*<div class="form-group">
+            @Html.LabelFor(model => model.Servidor, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Servidor, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Servidor, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Puerto, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Puerto, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Puerto, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Usuario, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Usuario, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Usuario, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Password, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Password, "", new { @class = "text-danger" })
+            </div>
+        </div>*@
+
+                <div class="form-group">
+        @Html.LabelFor(model => model.Destinatario, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+        @Html.EditorFor(model => model.Destinatario, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Destinatario, "", new { @class = "text-danger" })
+                </div>
+            </div>
+
+               <div class="form-group">
+        @Html.LabelFor(model => model.Asunto, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+        @Html.EditorFor(model => model.Asunto, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Asunto, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+
+
+                <div class="form-group">
+        @Html.LabelFor(model => model.Mensaje, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+
+        @Html.EditorFor(model => model.Mensaje, new { htmlAttributes = new { @class = "form-control" } })
+        @Html.ValidationMessageFor(model => model.Mensaje, "", new { @class = "text-danger" })
+
+                    </div>
+                </div>
+
+                <div class="form-group">
+        @Html.LabelFor(model => model.Adjunto, htmlAttributes: new { @class = "control-label col-md-2" })
+                    <div class="col-md-10">
+        @Html.DisplayFor(model => model.Adjunto)
+        @Html.HiddenFor(model => model.Adjunto)
+        @Html.ValidationMessageFor(model => model.Adjunto, "", new { @class = "text-danger" })
+                    </div>
+                </div>
+        <div id="messageOk" class="text-danger">ok</div>
+        
+                @*<div class="form-group">
+                    <div class="col-md-offset-2 col-md-10">
+                        <input type="submit" id="btnEnviar" name="button" value="Enviar" class="btn btn-primary" />
+                    </div>
+                </div>*@
+            </div>
+
+
+       
+
+    @section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    }

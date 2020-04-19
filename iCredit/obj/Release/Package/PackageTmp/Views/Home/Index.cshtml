@@ -1,0 +1,255 @@
+﻿@model CrediAdmin.Models.empresa
+@{
+    ViewBag.Title = "iCredit";
+    Layout = "~/Views/Shared/_LayoutHome.cshtml";
+}
+
+<script type="text/javascript">
+   
+    function isValidEmailAddress(emailAddress) {
+        var pattern = new RegExp(/^(("[\w-\s]+")|([\w-]+(?:\.[\w-]+)*)|("[\w-\s]+")([\w-]+(?:\.[\w-]+)*))(@@((?:[\w-]+\.)*\w[\w-]{0,66})\.([a-z]{2,6}(?:\.[a-z]{2})?)$)|(@@\[?((25[0-5]\.|2[0-4][0-9]\.|1[0-9]{2}\.|[0-9]{1,2}\.))((25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\.){2}(25[0-5]|2[0-4][0-9]|1[0-9]{2}|[0-9]{1,2})\]?$)/i);
+        return pattern.test(emailAddress);
+    }
+   
+
+    $(document).ready(function () {
+
+        var Path = location.host;
+        var VirtualDirectory;
+        if (Path.indexOf("localhost") >= 0 && Path.indexOf(":") >= 0) { VirtualDirectory = ""; }
+        else {
+            var pathname = window.location.pathname; var VirtualDir = pathname.split('/');
+            VirtualDirectory = VirtualDir[1]; VirtualDirectory = '/' + VirtualDirectory;
+        }
+        //$("#Nombre").val("FGR");
+        //$('#EmpEmail').val("william.gustavo@gmail.com");
+        //$('#myTabs a').click(function (e) {
+        //    e.preventDefault()
+        //    $(this).tab('show')
+        //})
+       
+
+        validar = function () {
+            for (var i = 0; i < arguments.length; i++) {
+                if (arguments[i].val() == "" || arguments[i].val() == null) {
+                    // alert("Falta digitar informacion");
+                    arguments[i].css("border", "1px solid red");
+                    arguments[i].focus();
+                    return false;
+                }
+            }
+            return true;
+        };
+
+        $("#loading").dialog({
+            hide: 'blind',
+            show: 'blind',
+            autoOpen: false,
+            width: 400,
+            height: 250,
+            modal: true,
+            buttons: 
+                {
+                    Ok: function () {
+                        $(this).dialog("close");
+                    }
+                },
+            open: function()
+                 {
+                    $(".ui-dialog-buttonpane button:contains('Ok')").button('disable');
+                }
+        });
+
+        $('#crearEmpresa').click(function (event) {
+            $('#messageError').html('').fadeIn();
+            //$(":button:contains('Ok')").prop("disabled", true).addClass("ui-state-disabled");
+          
+           //$('.ui-dialog-buttonpane').find('button:first').css('visibility', 'hidden');
+           // $(".ui-dialog-buttonpane button:contains('Ok')").button("disable");
+
+            if (validar($("#Nombre"), $('#EmpEmail'))) {
+                if (isValidEmailAddress($('#EmpEmail').val())) {
+                 //   alert('datos validos');
+
+                    $.ajax({
+                        //para validar que la fecha que esta ingesando los asistente sea mayor a la fecha actual de nomina
+                        url: VirtualDirectory + "/Home/CrearEmpresa/",
+                        type: "POST",
+                        // data: JSON.stringify({ cliNit: $('#Cliente_Cli_Nit').val(), Cli_Nombre: $('#Cli_Nombre').val(), Cli_Apellido: $('#Cli_Apellido').val() }),
+                        data: JSON.stringify({
+                            Nombre: $("#Nombre").val(), EmpEmail: $('#EmpEmail').val()
+                        }),
+                        dataType: "json",
+                        contentType: "application/json; charset=utf-8",
+                        beforeSend: function () {
+                            $("#loading").dialog('open').html("<p>Registrando Empresa. Espere por favor...</p>");
+                            //$('.ui-dialog-buttonpane button:contains("Ok")').button().hide();
+                        },
+                        success: function (data) {
+                            if (data.success) {
+                                $('#loading').html('<p class="text-success">La Empresa ' + $("#Nombre").val() + ' fue creada exitosamente. Recibira un correo electronico con las credenciales de autenticación para ingresar a nuestra Plataforma</p>');
+                                $('a[href="#1"]').tab('show');
+                                $(".ui-dialog-buttonpane button:contains('Ok')").button("enable");
+
+                            } else {
+                                //alert('error');
+                                //$('#messageError').html(data.Error).fadeIn();
+                                $("#loading").dialog('open').html('<p class="text-danger">No fue posible registrar la empresa. ' + data.Error + '</p>');
+                                $(".ui-dialog-buttonpane button:contains('Ok')").button("enable");
+                            }
+                        },
+
+                        error: function () {
+                           // alert('error');
+                           // $('#messageError').html('Error Occurred').fadeIn();
+                            $("#loading").dialog('open').html("<p>" + data.Error + "</p>");
+                            $(".ui-dialog-buttonpane button:contains('Ok')").button("enable");
+                        }
+                    });
+                } else {
+                    $('#messageError').html('Correo Electronico No Valido').fadeIn();
+                }
+            }else {
+                        $('#messageError').html('Debe completar los campos').fadeIn();
+                   }
+            event.preventDefault();
+        });
+
+
+
+
+    });
+</script>
+<div id="loading" title="Registrando Empresa">
+    <p>Please wait ...</p>
+</div>
+
+    @*<div class="jumbotron">
+        <h1>CrediAdmin</h1>
+            
+    </div>*@
+        <br>
+        <br>
+        <div class="jumbotron">
+           
+            <h1>iCredit</h1>
+            <p class="lead">Administre sus creditos en nuestra plataforma</p>
+        </div>
+     <div class="row col-md-12">
+         <p>
+             iCredit es una plataforma para la administracion de Creditos de su empresa,
+             los socios de la empresa hacen aportes y retiros de capital para poder
+             generar creditos a clientes, a diferentes tasas de interes y plazos personalizados.
+             Al generar los creditos se generan unas cuotas que contienen abono a acapital y abono a interes,
+             a estas cuotas se pueden hacer abonos totales o parciales,
+             y llevar un control de los abonos que realizan los clientes.
+
+         </p>
+     </div>
+    <div class="row col-md-12">
+
+
+    <div class="col-md-8">
+        <h3>Caracteristicas iCredit</h3>
+
+        <ul type=circle>
+            @*<li>Manejar diferenes empresas que se dediquen al prestamo de dinero.*@
+            <li>Administracion de socios, aportes y retiros de dinero.
+            <li>Registro de Clientes.
+            <li>Generacion de creditos a clientes con tasas de interes y plazos personalizables.
+            <li>Visualizacion de cuotas x pagar y cuotas pagadas
+            <li>Registro de abono totales o parciales a las cuotas de los creditos.
+            <li>Envio de comprobates de abonos a clientes via Email.
+            <li>
+                Visualizacion de estados financieros de la empresa por periodo, calculando Capital x cobrar, Interes x cobrar,
+                Capital Recaudado, Intereses Recaudados, Total en caja.
+            <li>Utilidades de socios por periodo.
+            <li>Retiro de utilidades
+            <li>Compatible 100% con dispositivos Moviles
+        </ul>
+
+        
+        <a href="~/Uploads/iCredit_ Manual_de_Usuario.pdf" target="_blank">Manual de Usuario</a>
+
+        @*<h2>Getting started</h2>
+            <p>
+                ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
+                enables a clean separation of concerns and gives you full control over markup
+                for enjoyable, agile development.
+            </p>
+            <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>*@
+    </div>
+    @{
+        <div class="col-md-4">
+            <div>
+                <div id="exTab2" class="container">
+                    <ul class="nav nav-tabs">
+                        <li class="active">
+                            <a href="#1" data-toggle="tab">Conectarse</a>
+                        </li>
+                        <li>
+                            <a href="#2" data-toggle="tab">Registre su Empresa</a>
+                        </li>
+                    </ul>
+
+                    <div class="tab-content ">
+                        <div class="tab-pane active" id="1">
+                            <br />
+                            @*<div id="messageError" class="text-danger"></div>*@
+                            @Html.Partial("~/Views/Account/LoginHome.cshtml", (CrediAdmin.Models.LoginViewModel)ViewBag.Login)
+                            @*<div id="messageOk" class="text-success"></div>*@
+                        </div>
+                        <div class="tab-pane" id="2">
+                            <div>
+                                @Html.Hidden("controlador", (string)ViewBag.controlador)
+                                <div id="messageError" class="text-danger"></div>
+                                @Html.Partial("~/Views/Empresa/CreateUno.cshtml", Model)
+                                <div id="messageOk" class="text-success"></div>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+
+            </div>
+            @*<p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
+                <p><a class="btn btn-default" href="http://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>*@
+        </div>
+    }
+</div>
+
+<div class="row col-md-12">
+    <div class="col-md-6 col-md-offset-3">
+        Navegadores Sugeridos
+    </div>
+ </div>
+    <div class="row col-md-12">
+        <div class="col-md-3">
+
+        </div>
+
+        <div class="col-md-3">
+            <img src="~/Images/chrome_logo_2x.png" />
+        </div>
+
+        <div class="col-md-3">
+            <img src="~/Images/firefox_logo.png" />
+        </div>
+
+        <div class="col-md-3">
+
+        </div>
+
+        @*<table>
+                <tr>
+                    <td></td>
+                    <td>
+
+                    </td>
+                    <td>
+
+                    </td>
+                </tr>
+            </table>*@
+    </div>

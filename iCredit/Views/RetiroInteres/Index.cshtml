@@ -1,0 +1,101 @@
+﻿@*@model IEnumerable<CrediAdmin.Models.retirointeres>*@
+@model PagedList.IPagedList<CrediAdmin.Models.retirointeres>
+@using PagedList.Mvc;
+<link href="~/Content/PagedList.css" rel="stylesheet" type="text/css" />
+
+
+@{
+    ViewBag.Title = "Index";
+}
+
+<h2>Retiros de Utilidades</h2>
+
+
+@using (Html.BeginForm("Index", "retirointeres", FormMethod.Get, new { @class = "form-inline" }))
+{
+    <div class="form-group">
+        <label for="campos1" class="control-label">Filtro</label>
+        @Html.DropDownList("campos1", null, String.Empty, htmlAttributes: new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="filtro1" class="control-label">Criterio</label>
+        @Html.TextBox("filtro1",  ViewBag.CurrentFilter as string, new { @class = "form-control" })
+    </div>
+    <div class="form-group">
+        <label for="Arch_Nombre" class="control-label"></label>
+        <input type="submit" value="Filtrar" class="form-control btn btn-warning" />
+    </div>
+}
+<br />
+
+<p>
+    <a href="@Url.Action("Create")"><img src="@Url.Content("~/Images/wznew.bmp")" alt="" /> @Html.ActionLink("Crear Nuevo", "Create")</a>
+</p>
+<div class="table-responsive">
+    <table class="table table-striped">
+        <tr>
+            <th>
+                @Html.ActionLink("Retiro Nro", "Index", new { sortOrder = ViewBag.SortRetiroInteresNro, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+            </th>
+            <th>
+                @Html.ActionLink("Valor", "Index", new { sortOrder = ViewBag.SortValor, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Valor)*@
+            </th>
+            <th>
+                @Html.ActionLink("Fecha", "Index", new { sortOrder = ViewBag.SortFecha, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Fecha)*@
+            </th>
+            <th>
+                @Html.ActionLink("Observacion", "Index", new { sortOrder = ViewBag.SortObservacion, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Observacion)*@
+            </th>
+            <th>
+                @Html.ActionLink("Estado", "Index", new { sortOrder = ViewBag.SortEstado, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter })
+                @*@Html.DisplayNameFor(model => model.Estado)*@
+            </th>
+            <th>Editar</th>
+            <th>Detalles</th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.RetiroInteresNro)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Valor)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Fecha)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Observacion)
+                </td>
+                <td>
+                    @if (item.Estado == true)
+                    {
+                        <text>Activo</text>
+                    }
+                    else
+                    {
+                        <text>Inactivo</text>
+                    }
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = CrediAdmin.Util.MiUtil.encriptar(item.RetiroInteresId.ToString()) }, new { @class = "btnEditar" })
+                </td>
+                <td>
+                    @Html.ActionLink("Detalles", "Details", new { id = CrediAdmin.Util.MiUtil.encriptar(item.RetiroInteresId.ToString()) }, new { @class = "btnVerDetalles" })
+
+                </td>
+            </tr>
+        }
+
+    </table>
+</div>
+    <br />
+    Pagina @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) de @Model.PageCount
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+            new { page, sortOrder = ViewBag.CurrentSort, currentCampo = ViewBag.CurrentCampo, currentFilter = ViewBag.CurrentFilter }))
+
