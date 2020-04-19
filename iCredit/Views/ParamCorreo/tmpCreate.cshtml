@@ -1,0 +1,119 @@
+﻿@model CrediAdmin.Models.paramcorreo
+
+@{
+    ViewBag.Title = "Create";
+}
+
+<h2>Create</h2>
+
+<script src="@Url.Content("~/Scripts/jquery.validate.min.js")" type="text/javascript"></script>
+<script src="@Url.Content("~/Scripts/jquery.validate.unobtrusive.min.js")" type="text/javascript"></script>
+
+
+<style type="text/css">
+.editor-field 
+{
+  margin: 0.1em 0 0 0;
+  text-transform:none;
+}
+.text-box {
+    width: 30em;
+    text-transform: none;
+}
+</style>
+
+
+@using (Html.BeginForm()) {
+    @Html.ValidationSummary(true)
+    <fieldset>
+        <legend>ParamCorreo</legend>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Servidor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Servidor)
+            @Html.ValidationMessageFor(model => model.Servidor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Puerto)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Puerto)
+            @Html.ValidationMessageFor(model => model.Puerto)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Usuario)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Usuario)
+            @Html.ValidationMessageFor(model => model.Usuario)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Password)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Password)
+            @Html.ValidationMessageFor(model => model.Password)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.EmpresaId, "Empresa")
+        </div>
+        <div class="editor-field">
+            @Html.DropDownList("EmpresaId", String.Empty)
+            @Html.ValidationMessageFor(model => model.EmpresaId)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.Activo)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.Activo)
+            @Html.ValidationMessageFor(model => model.Activo)
+        </div>
+        <!--
+        <div class="editor-label">
+            @Html.LabelFor(model => model.CreadoPor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.CreadoPor)
+            @Html.ValidationMessageFor(model => model.CreadoPor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaCreacion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaCreacion)
+            @Html.ValidationMessageFor(model => model.FechaCreacion)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.ModificadoPor)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.ModificadoPor)
+            @Html.ValidationMessageFor(model => model.ModificadoPor)
+        </div>
+
+        <div class="editor-label">
+            @Html.LabelFor(model => model.FechaModificacion)
+        </div>
+        <div class="editor-field">
+            @Html.EditorFor(model => model.FechaModificacion)
+            @Html.ValidationMessageFor(model => model.FechaModificacion)
+        </div>
+        -->
+        <p>
+            <input type="submit" value="Create" />
+        </p>
+    </fieldset>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>

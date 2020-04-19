@@ -1,0 +1,39 @@
+﻿@*@{
+     DateTime dt = DateTime.Now;
+ if (Model != null)
+ {
+     dt = (System.DateTime)Model;
+
+ }
+@Html.TextBox("", String.Format("{0:d}", dt.ToShortDateString()), new { @class = "datefield", type = "date" })
+}*@ 
+
+@*@{
+    DateTime dt = DateTime.Now;
+    if (Model != null)
+    {
+        dt = (System.DateTime)Model;
+
+    }
+    @Html.TextBox("", String.Format("{0:d}", dt.ToShortDateString()), new { @class = "form-control datefield", type = "date" })
+}*@
+
+
+
+@{
+@model DateTime?
+@Html.TextBoxFor(model => Model,"{0:dd/MM/yyyy}",new { @class = "form-control jqueryui-marker-datepicker" })
+   }
+@*<script type='text/javascript'>
+    $(document).ready(function () {
+        $(".datefield").datepicker({
+            //      buttonImage: "/content~/Images/calendar.gif",
+            //      showOn: "both",
+            //      defaultDate: $("#calendar-inline").attr('rel')
+
+            showAnim: 'slideDown',
+            dateFormat: 'dd/mm/yy'
+
+        });
+    });
+</script>*@

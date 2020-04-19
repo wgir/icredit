@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="04f67f46bfbf413d87289642ac395470" Name="Diagram1" ZoomLevel="58">
+        <EntityTypeShape EntityType="icreditModel.C__migrationhistory" Width="1.5" PointX="0.75" PointY="0.75" />
+        <EntityTypeShape EntityType="icreditModel.abono" Width="1.5" PointX="12" PointY="15.125" />
+        <EntityTypeShape EntityType="icreditModel.abonocapital" Width="1.5" PointX="9.75" PointY="19.75" />
+        <EntityTypeShape EntityType="icreditModel.aporte" Width="1.5" PointX="5.25" PointY="20.375" />
+        <EntityTypeShape EntityType="icreditModel.aspnetroles" Width="1.5" PointX="10" PointY="1.125" />
+        <EntityTypeShape EntityType="icreditModel.aspnetuserclaims" Width="1.5" PointX="10" PointY="3.5" />
+        <EntityTypeShape EntityType="icreditModel.aspnetuserlogins" Width="1.5" PointX="10" PointY="6.25" />
+        <EntityTypeShape EntityType="icreditModel.aspnetusers" Width="1.5" PointX="7.75" PointY="2.625" />
+        <EntityTypeShape EntityType="icreditModel.ciudad" Width="1.5" PointX="3" PointY="16.5" />
+        <EntityTypeShape EntityType="icreditModel.cliente" Width="1.5" PointX="5.25" PointY="15" />
+        <EntityTypeShape EntityType="icreditModel.conceptoaporte" Width="1.5" PointX="3" PointY="12.875" />
+        <EntityTypeShape EntityType="icreditModel.conceptoretiro" Width="1.5" PointX="3" PointY="24.5" />
+        <EntityTypeShape EntityType="icreditModel.consecutivo" Width="1.5" PointX="3" PointY="9.875" />
+        <EntityTypeShape EntityType="icreditModel.contacto" Width="1.5" PointX="2.75" PointY="0.75" />
+        <EntityTypeShape EntityType="icreditModel.cuota" Width="1.5" PointX="9.75" PointY="15.5" />
+        <EntityTypeShape EntityType="icreditModel.divisioncredito" Width="1.5" PointX="5.25" PointY="8.625" />
+        <EntityTypeShape EntityType="icreditModel.empresa" Width="1.5" PointX="0.75" PointY="17.875" />
+        <EntityTypeShape EntityType="icreditModel.loghome" Width="1.5" PointX="4.75" PointY="0.75" />
+        <EntityTypeShape EntityType="icreditModel.paramcorreo" Width="1.5" PointX="3" PointY="5.875" />
+        <EntityTypeShape EntityType="icreditModel.retiro" Width="1.5" PointX="5.25" PointY="26.25" />
+        <EntityTypeShape EntityType="icreditModel.retirointeres" Width="1.5" PointX="3" PointY="32.25" />
+        <EntityTypeShape EntityType="icreditModel.socio" Width="1.5" PointX="3" PointY="28.125" />
+        <EntityTypeShape EntityType="icreditModel.tipocuota" Width="1.5" PointX="5.25" PointY="12.125" />
+        <EntityTypeShape EntityType="icreditModel.usuario" Width="1.5" PointX="3" PointY="20.25" />
+        <AssociationConnector Association="icreditModel.FK_Abono_Cuota_CuotaId" />
+        <AssociationConnector Association="icreditModel.FK_Aporte_ConceptoAporte_ConceptoAporteId" />
+        <AssociationConnector Association="icreditModel.FK_Aporte_Socio_SocioId" />
+        <AssociationConnector Association="icreditModel.ApplicationUser_Claims" />
+        <AssociationConnector Association="icreditModel.ApplicationUser_Logins" />
+        <AssociationConnector Association="icreditModel.ciudad_empresa" />
+        <AssociationConnector Association="icreditModel.cliente_ciudad" />
+        <AssociationConnector Association="icreditModel.FK_Cliente_Empresa_EmpresaId" />
+        <AssociationConnector Association="icreditModel.FK_ConceptoAporte_Empresa_EmpresaId" />
+        <AssociationConnector Association="icreditModel.FK_ConceptoRetiro_Empresa_EmpresaId" />
+        <AssociationConnector Association="icreditModel.FK_Retiro_ConceptoRetiro_ConceptoRetiroId" />
+        <AssociationConnector Association="icreditModel.FK_consecutivo_empresa" />
+        <AssociationConnector Association="icreditModel.FK_ParamCorreo_Empresa_EmpresaId" />
+        <AssociationConnector Association="icreditModel.FK_RetiroInteres_Empresa_EmpresaId" />
+        <AssociationConnector Association="icreditModel.FK_Socio_Empresa_EmpresaId" />
+        <AssociationConnector Association="icreditModel.usuario_empresa" />
+        <AssociationConnector Association="icreditModel.FK_Retiro_Socio_SocioId" />
+        <AssociationConnector Association="icreditModel.aspnetuserroles" />
+        <EntityTypeShape EntityType="icreditModel.credito" Width="1.5" PointX="7.5" PointY="12.875" />
+        <AssociationConnector Association="icreditModel.abonoCapital_Credito" />
+        <AssociationConnector Association="icreditModel.FK_Credito_Cliente_ClienteId" />
+        <AssociationConnector Association="icreditModel.FK_Credito_DivisionCredito_DivisionCreditoId" />
+        <AssociationConnector Association="icreditModel.FK_credito_empresa_1" />
+        <AssociationConnector Association="icreditModel.FK_Credito_TipoCuota_TipoCuotaId" />
+        <AssociationConnector Association="icreditModel.FK_Cuota_Credito_CreditoId" />
+        <EntityTypeShape EntityType="icreditModel.backup_cuota" Width="1.5" PointX="12" PointY="19.875" />
+        <AssociationConnector Association="icreditModel.abonoCapital_bakCuota" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

@@ -1,0 +1,55 @@
+﻿/**************************************************************************************/
+
+.jumbotron h1 {
+    line-height: 1;
+    color: #183650;
+}
+
+.jumbotron {
+    color: #183650;
+    text-shadow: 0px 1px 1px #444;
+}
+
+.navbar-inverse .navbar-brand:hover, .navbar-inverse .navbar-brand:focus {
+    color: #ccc;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-brand {
+    color: #fff;
+    font-size: 26px;
+    font-family: "Lucida Bright",Georgia,serif
+}
+.navbar-inverse {
+    background-color: #183650;
+    border-color: #080808;
+}
+
+.navbar-inverse .navbar-nav > li > a:hover, .navbar-inverse .navbar-nav > li > a:focus {
+    color: #666666;
+    background-color: transparent;
+}
+
+.navbar-inverse .navbar-nav > li > a {
+    color: #fff;
+}
+
+.nav > li {
+    position: relative;
+    display: block;
+    font-size: 16px;
+    font-family: 'Lato', sans-serif;
+}
+
+.navbar-inverse .navbar-nav > .active > a, .navbar-inverse .navbar-nav > .active > a:hover, .navbar-inverse .navbar-nav > .active > a:focus {
+    color: #FFF;
+    background-color: #183650;
+    text-decoration: underline;
+}
+
+
+.navbar-inverse .navbar-nav > .open > a, .navbar-inverse .navbar-nav > .open > a:hover, .navbar-inverse .navbar-nav > .open > a:focus {
+    color: #ffffff;
+    background-color: #183650;
+}
+

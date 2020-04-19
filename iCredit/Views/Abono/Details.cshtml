@@ -1,0 +1,100 @@
+﻿@model CrediAdmin.Models.abono
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Detalles Abono</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            Credito
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cuota.credito.CreditoNro)
+        </dd>
+
+        <dt>
+            Cuota
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cuota.Numero)
+        </dd>
+
+        <dt>
+            Fecha de la Cuota
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.cuota.Fecha)
+        </dd>
+
+        <dt>Abono Nro</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AbonoNro)
+        </dd>
+
+        <dt>Fecha del Abono</dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Fecha)
+        </dd>
+
+
+        <dt>Valor</dt>
+       
+         <dd>
+            @Html.DisplayFor(model => model.Valor)
+        </dd>
+
+        <dt>Observacion</dt>
+            
+        <dd>
+            @Html.DisplayFor(model => model.Observacion)
+        </dd>
+
+        <dt>Activo</dt>
+       
+        <dd>
+            @Html.DisplayFor(model => model.Estado)
+        </dd>
+
+        <dt>CreadoPor</dt>
+       
+        <dd>
+            @CrediAdmin.Util.MiUtil.getNombreUsuario(0,Model.CreadoPor)
+        </dd>
+
+        <dt>FechaCreacion</dt>
+       
+        <dd>
+            @Html.DisplayFor(model => model.FechaCreacion)
+        </dd>
+
+        <dt>
+            ModificadoPor
+        </dt>
+        
+        <dd>
+            @CrediAdmin.Util.MiUtil.getNombreUsuario(0, Model.ModificadoPor)
+        </dd>
+
+        <dt>
+            FechaModificacion
+        </dt>
+        
+            <dd>
+                @Html.DisplayFor(model => model.FechaModificacion)
+            </dd>
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = CrediAdmin.Util.MiUtil.encriptar(ViewBag.AbonoId.ToString()), controlador = ViewBag.controlador }) |
+    @Html.ActionLink("Volver al Listado", "Index", new { id = CrediAdmin.Util.MiUtil.encriptar(Model.CuotaId.ToString()), controlador = ViewBag.controlador })
+</p>
