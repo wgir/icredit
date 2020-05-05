@@ -879,7 +879,7 @@ namespace CrediAdmin.Models
         [Display(Name = "Interes Mensual %")]
         public decimal? Interes { get { return _interes; } set { _interes = value; } } // tasa mensual
         [Required]
-        [Range(1, 60, ErrorMessage = "La cantidad de meses debe estar entre {1} y {2}")]
+        [Range(1, 120, ErrorMessage = "La cantidad de meses debe estar entre {1} y {2}")]
         public int Meses { get; set; }
         [Required]
         [Display(Name = "Tipo Cuota")]
